@@ -1,0 +1,91 @@
+<html ng-app="calendarEditApp">
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+  <script src="./js/controllers.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
+
+</head>
+<body ng-controller="RoastLogAppCtrl">
+
+	
+	<!-- FORM TO LOG A NEW ROAST -->
+	<div>
+		<div>
+			<form name="form" novalidate class="css-form">
+				<div class="form-group">
+
+					<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+					<input type="text" name="bean" class="form-control input-lg text-center" placeholder="Bean" ng-model="formdata.bean" required><br />
+
+					<input type="text" name="roast_date" class="form-control input-lg text-center" placeholder="Roast Date" ng-model="formdata.roast_date" required><br />
+					
+					<input type="text" name="roaster_program" class="form-control input-lg text-center" placeholder="Roaster Program" ng-model="formdata.roaster_program" required><br />
+
+					Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" class="form-control input-lg text-center" ng-model="formdata.roaster_program" checked="true" required><br />
+
+					Yellow: <input type="time" name="time_to_yellow" class="form-control input-lg text-center" ng-model="formdata.time_to_yellow" required>
+					<input type="text" name="temp_at_yellow" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_yellow" required>
+					<br />
+
+					Brown: <input type="time" name="time_to_brown" class="form-control input-lg text-center" ng-model="formdata.time_to_brown" required>
+					<input type="text" name="temp_at_brown" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_brown" required>
+					<br />
+
+					1st Crack Begin: <input type="time" name="time_to_first_crack_start" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_start" required>
+					<input type="text" name="temp_at_first_crack_start" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_start" required>
+					<br />
+
+					1st Crack End: <input type="time" name="time_to_first_crack_end" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_end" required>
+					<input type="text" name="temp_at_first_crack_end" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_end" required>
+					<br />
+
+					2nd Crack Begin: <input type="time" name="time_to_second_crack_start" class="form-control input-lg text-center" ng-model="formdata.time_to_second_crack_start" required>
+					<input type="text" name="temp_at_second_crack_start" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_second_crack_start" required>
+					<br />
+
+					2nd Crack End: <input type="time" name="time_to_first_crack_end" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_end" required>
+					<input type="text" name="temp_at_first_crack_end" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_end" required>
+					<br />
+
+					<input type="text" name="location_name" class="form-control input-lg text-center" placeholder="location name" ng-model="formdata.location_name" required><br />
+
+					<input type="text" name="location_website" class="form-control input-lg text-center" placeholder="location website" ng-model="formdata.location_website" required><br />
+
+					<input type="text" name="location_address" class="form-control input-lg text-center" placeholder="location address" ng-model="formdata.location_address" required>
+				</div>
+
+				<!-- addRoast() ADDS THE NEW ROAST -->
+				<button type="submit" class="btn btn-primary btn-lg" ng-click="addRoast()" ng-disabled="form.$invalid">Add</button>
+			</form>
+		</div>
+	</div>
+
+
+
+	<!-- SHOW LIST -->
+	<ul ng-repeat="roast in roasts">
+		<a ng-click="deleteRoast(roast._id)"><li class='close_button'></li></a>
+	    <li>
+	      {{roast.date}}
+	    </li>
+	    <li>
+	      {{roast.show_description}}
+	    </li>
+	    <li>
+	      {{roast.location_name}}
+	    </li>
+	    <li>
+	      <a href="{{roast.location_website}}">{{roast.location_website}}</a>
+	    </li>
+	    <li>
+	      {{roast.location_address}}
+	    </li>
+	</ul>
+
+	
+
+	<!-- <div ng-view></div> -->
+
+</body>
+</html>
