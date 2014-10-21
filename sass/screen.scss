@@ -1,0 +1,80 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+$color-base-text: #ff9f46;
+
+p {
+	margin: 20px 50px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: .9em;
+	color: $color-base-text;
+	// font-style: normal;
+}
+
+button {
+	width: 200px;
+	height: 50px;
+	background-color: #e2b960;
+	color:#FFF;
+	border: 0px;
+	letter-spacing: .2em;
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: .8em;
+	cursor:pointer;
+}
+
+.new-roast {
+	float: left;
+	margin-top: 25px;
+	margin-left: 25px;
+	width: 40%;
+}
+
+.close_button {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,<%3Fxml%20version%3D"1.0"%20encoding%3D"utf-8"%3F><!DOCTYPE%20svg%20PUBLIC%20"-%2F%2FW3C%2F%2FDTD%20SVG%201.1%20Tiny%2F%2FEN"%20"http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11-tiny.dtd"><svg%20version%3D"1.1"%20baseProfile%3D"tiny"%20id%3D"Layer_1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink"%20%20x%3D"0px"%20y%3D"0px"%20width%3D"25px"%20height%3D"25px"%20viewBox%3D"0%200%2025%2025"%20xml%3Aspace%3D"preserve"><style%20type%3D"text%2Fcss">circle%2C%20ellipse%2C%20line%2C%20path%2C%20polygon%2C%20polyline%2C%20rect%2C%20text%20%7B%20fill%3A%20%23999999%20!important%3B%20%7D<%2Fstyle><polygon%20fill-rule%3D"evenodd"%20points%3D"16.667%2C12.5%2016.667%2C12.5%2025.001%2C4.167%2020.834%2C0%2012.5%2C8.333%204.167%2C0%200%2C4.167%208.334%2C12.5%20%208.334%2C12.5%208.334%2C12.5%200%2C20.833%204.167%2C25%2012.501%2C16.667%2020.834%2C25%2025.001%2C20.833%2016.667%2C12.5%20"%2F><%2Fsvg>');
+	background-repeat: no-repeat;
+	padding-right: 8px;
+	padding-top:10px;
+	padding-left: 8px;
+	background-size: 16px;
+}
+
+.roast-list {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: .9em;
+	color: $color-base-text;
+	float: right;
+	margin-top: 25px;
+	margin-right: 25px;
+	width: 55%;
+
+	li {
+		margin-bottom: .2em;
+	}
+
+	.close_button {
+		float:left;
+		margin:0px 10px;
+	}
+}
+
+#temp_curve_inputs {
+	ul {
+		li {
+			display: inline;
+			margin-right: 3px;
+		}
+	}
+	margin-left: 50px;
+}
+
+.temp {
+	margin-right: 7px;
+}
+
+
