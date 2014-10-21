@@ -16,7 +16,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 //app.set('views', __dirname + '/views');
 
 require('./public/js/routes.js')(app);
-//require('./public/js/controllers.js')(app);
+// require('./public/js/controllers.js')(app);
 
 
 app.listen(8080);

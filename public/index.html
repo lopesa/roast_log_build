@@ -1,88 +1,95 @@
-<html ng-app="calendarEditApp">
+<html ng-app="roastLogApp">
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
   <script src="./js/controllers.js"></script>
-  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./stylesheets/screen.css">
 
 </head>
 <body ng-controller="RoastLogAppCtrl">
 
 	
 	<!-- FORM TO LOG A NEW ROAST -->
-	<div>
-		<div>
-			<form name="form" novalidate class="css-form">
-				<div class="form-group">
+	<div class="new-roast">
+		<form name="form" novalidate>
+			<div>
 
-					<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-					<input type="text" name="bean" class="form-control input-lg text-center" placeholder="Bean" ng-model="formdata.bean" required><br />
+				<!-- BIND THIS VALUE TO formdata.text IN ANGULAR -->
+				<p><input type="text" name="bean" placeholder="Bean" ng-model="formdata.bean"></p>
 
-					<input type="text" name="roast_date" class="form-control input-lg text-center" placeholder="Roast Date" ng-model="formdata.roast_date" required><br />
-					
-					<input type="text" name="roaster_program" class="form-control input-lg text-center" placeholder="Roaster Program" ng-model="formdata.roaster_program" required><br />
+				<p><input type="date" name="roast_date" placeholder="Roast Date" ng-model="formdata.roast_date"></p>
+				
+				<p><input type="text" name="roaster_program" placeholder="Roaster Program" ng-model="formdata.roaster_program"></p>
 
-					Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" class="form-control input-lg text-center" ng-model="formdata.roaster_program" checked="true" required><br />
+				<p>Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" ng-model="formdata.roaster_warm"></p>
 
-					Yellow: <input type="time" name="time_to_yellow" class="form-control input-lg text-center" ng-model="formdata.time_to_yellow" required>
-					<input type="text" name="temp_at_yellow" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_yellow" required>
-					<br />
+				<p>Yellow: <input type="text" size="8" name="time_to_yellow" ng-model="formdata.time_to_yellow">
+				<input type="text" name="temp_at_yellow" placeholder="temp" ng-model="formdata.temp_at_yellow"></p>
 
-					Brown: <input type="time" name="time_to_brown" class="form-control input-lg text-center" ng-model="formdata.time_to_brown" required>
-					<input type="text" name="temp_at_brown" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_brown" required>
-					<br />
+				<p>Brown: <input type="text" size="8" name="time_to_brown" ng-model="formdata.time_to_brown">
+				<input type="text" name="temp_at_brown" placeholder="temp" ng-model="formdata.temp_at_brown"></p>
 
-					1st Crack Begin: <input type="time" name="time_to_first_crack_start" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_start" required>
-					<input type="text" name="temp_at_first_crack_start" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_start" required>
-					<br />
+				<p>1st Crack Begin: <input type="text" size="8" name="time_to_first_crack_start" ng-model="formdata.time_to_first_crack_start">
+				<input type="text" name="temp_at_first_crack_start" placeholder="temp" ng-model="formdata.temp_at_first_crack_start"></p>
 
-					1st Crack End: <input type="time" name="time_to_first_crack_end" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_end" required>
-					<input type="text" name="temp_at_first_crack_end" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_end" required>
-					<br />
+				<p>1st Crack End: <input type="text" size="8" name="time_to_first_crack_end" ng-model="formdata.time_to_first_crack_end">
+				<input type="text" name="temp_at_first_crack_end" placeholder="temp" ng-model="formdata.temp_at_first_crack_end"></p>
 
-					2nd Crack Begin: <input type="time" name="time_to_second_crack_start" class="form-control input-lg text-center" ng-model="formdata.time_to_second_crack_start" required>
-					<input type="text" name="temp_at_second_crack_start" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_second_crack_start" required>
-					<br />
+				<p>2nd Crack Begin: <input type="text" size="8" name="time_to_second_crack_start" ng-model="formdata.time_to_second_crack_start">
+				<input type="text" name="temp_at_second_crack_start" placeholder="temp" ng-model="formdata.temp_at_second_crack_start"></p>
 
-					2nd Crack End: <input type="time" name="time_to_first_crack_end" class="form-control input-lg text-center" ng-model="formdata.time_to_first_crack_end" required>
-					<input type="text" name="temp_at_first_crack_end" class="form-control input-lg text-center" placeholder="temp" ng-model="formdata.temp_at_first_crack_end" required>
-					<br />
+				<p>2nd Crack End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="formdata.time_to_second_crack_end">
+				<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="formdata.temp_at_second_crack_end"></p>
 
-					<input type="text" name="location_name" class="form-control input-lg text-center" placeholder="location name" ng-model="formdata.location_name" required><br />
+				<p>Drop: <input type="text" size="8" name="time_at_drop" ng-model="formdata.time_at_drop">
+				<input type="text" name="temp_at_drop" placeholder="temp" ng-model="formdata.temp_at_drop"></p>
 
-					<input type="text" name="location_website" class="form-control input-lg text-center" placeholder="location website" ng-model="formdata.location_website" required><br />
+				<p><textarea rows="4" cols="50" name="roast_notes" placeholder="Roast Notes" ng-model="formdata.roast_notes"></textarea></p>
 
-					<input type="text" name="location_address" class="form-control input-lg text-center" placeholder="location address" ng-model="formdata.location_address" required>
+				<p><textarea rows="4" cols="50" name="taste_notes" placeholder="Taste Notes" ng-model="formdata.taste_notes"></textarea></p>
+
+				<div id="temp_curve_inputs">
+				<ul>
+					<li><input type="text" size="2" name="0" placeholder="0" ng-model="formdata.temp_curve[0]"></li>
+					<li><input type="text" size="2" name="1" placeholder="1" ng-model="formdata.temp_curve[1]"></li>
+					<li><input type="text" size="2" name="2" placeholder="2" ng-model="formdata.temp_curve[2]"></li>
+					<li><input type="text" size="2" name="3" placeholder="3" ng-model="formdata.temp_curve[3]"></li>
+					<li><input type="text" size="2" name="4" placeholder="4" ng-model="formdata.temp_curve[4]"></li>
+					<li><input type="text" size="2" name="5" placeholder="5" ng-model="formdata.temp_curve[5]"></li>
+					<li><input type="text" size="2" name="6" placeholder="6" ng-model="formdata.temp_curve[6]"></li>
+				</ul>
 				</div>
 
-				<!-- addRoast() ADDS THE NEW ROAST -->
-				<button type="submit" class="btn btn-primary btn-lg" ng-click="addRoast()" ng-disabled="form.$invalid">Add</button>
-			</form>
-		</div>
+
+
+			</div>
+
+			<!-- addRoast() ADDS THE NEW ROAST -->
+			<p><button type="submit" class="btn btn-primary btn-lg" ng-click="addRoast()">ADD ROAST</button></p>
+		</form>
 	</div>
 
 
-
-	<!-- SHOW LIST -->
-	<ul ng-repeat="roast in roasts">
-		<a ng-click="deleteRoast(roast._id)"><li class='close_button'></li></a>
-	    <li>
-	      {{roast.date}}
-	    </li>
-	    <li>
-	      {{roast.show_description}}
-	    </li>
-	    <li>
-	      {{roast.location_name}}
-	    </li>
-	    <li>
-	      <a href="{{roast.location_website}}">{{roast.location_website}}</a>
-	    </li>
-	    <li>
-	      {{roast.location_address}}
-	    </li>
-	</ul>
-
+	<!-- SHOW ROASTS -->
+	<div class="roast-list" ng-repeat="roast in roasts">
+		<a ng-click="deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
+		<div style="padding-left:42px;">
+			<ul >
+				<li>
+			      {{roast.bean}}
+			    </li>
+			    <li>
+			      {{roast.roast_date}}
+			    </li>
+			    <li>
+			      {{roast.roaster_program}}
+			    </li>
+			    <li>
+			    	<span class="temp" ng-repeat="temp in roast.temp_curve">{{temp}}</span>
+			    </li>
+			</ul>
+		</div>
+	</div>	
 	
 
 	<!-- <div ng-view></div> -->

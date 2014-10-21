@@ -43,9 +43,9 @@ module.exports = function(app) {
 
 	//delete a roast
 
-	app.delete('/api/roasts/:todo_id', function(req, res) {
+	app.delete('/api/roasts/:roast_id', function(req, res) {
 
-		var roastIDToRemove = req.params.todo_id;
+		var roastIDToRemove = req.params.roast_id;
 		
 		//console.log('got here in routes');
 		//console.log(req.params.todo_id);
