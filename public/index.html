@@ -2,11 +2,21 @@
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
-  <script src="./js/controllers.js"></script>
-  <link rel="stylesheet" href="./stylesheets/screen.css">
 
+  <script src="./vendors/d3.js"></script>
+  <script src="./vendors/nv.d3.js"></script>
+  <script src="./vendors/angularjs-nvd3-directives.js"></script>
+
+    <script src="./js/services/CRUDservice.js"></script>
+	<script src="./js/controllers/controllers.js"></script>
+    <script src="./js/app.js"></script>
+
+  <link rel="stylesheet" href="./css/screen.css">
+  
+  <link rel="stylesheet" href="./vendors/nv.d3.css">
+  
 </head>
-<body ng-controller="RoastLogAppCtrl">
+<body ng-controller="roastLogAppCtrl as mainCtrl">
 
 	
 	<!-- FORM TO LOG A NEW ROAST -->
@@ -14,49 +24,49 @@
 		<form name="form" novalidate>
 			<div>
 
-				<!-- BIND THIS VALUE TO formdata.text IN ANGULAR -->
-				<p><input type="text" name="bean" placeholder="Bean" ng-model="formdata.bean"></p>
+				<!-- BIND THIS VALUE TO mainCtrl.newRoast.text IN ANGULAR -->
+				<p><input type="text" name="bean" placeholder="Bean" ng-model="mainCtrl.newRoast.bean"></p>
 
-				<p><input type="date" name="roast_date" placeholder="Roast Date" ng-model="formdata.roast_date"></p>
+				<p><input type="date" name="roast_date" placeholder="Roast Date" ng-model="mainCtrl.newRoast.roast_date"></p>
 				
-				<p><input type="text" name="roaster_program" placeholder="Roaster Program" ng-model="formdata.roaster_program"></p>
+				<p><input type="text" name="roaster_program" placeholder="Roaster Program" ng-model="mainCtrl.newRoast.roaster_program"></p>
 
-				<p>Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" ng-model="formdata.roaster_warm"></p>
+				<p>Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" ng-model="mainCtrl.newRoast.roaster_warm"></p>
 
-				<p>Yellow: <input type="text" size="8" name="time_to_yellow" ng-model="formdata.time_to_yellow">
-				<input type="text" name="temp_at_yellow" placeholder="temp" ng-model="formdata.temp_at_yellow"></p>
+				<p>Yellow: <input type="text" size="8" name="time_to_yellow" ng-model="mainCtrl.newRoast.time_to_yellow">
+				<input type="text" name="temp_at_yellow" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_yellow"></p>
 
-				<p>Brown: <input type="text" size="8" name="time_to_brown" ng-model="formdata.time_to_brown">
-				<input type="text" name="temp_at_brown" placeholder="temp" ng-model="formdata.temp_at_brown"></p>
+				<p>Brown: <input type="text" size="8" name="time_to_brown" ng-model="mainCtrl.newRoast.time_to_brown">
+				<input type="text" name="temp_at_brown" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_brown"></p>
 
-				<p>1st Crack Begin: <input type="text" size="8" name="time_to_first_crack_start" ng-model="formdata.time_to_first_crack_start">
-				<input type="text" name="temp_at_first_crack_start" placeholder="temp" ng-model="formdata.temp_at_first_crack_start"></p>
+				<p>1st Crack Begin: <input type="text" size="8" name="time_to_first_crack_start" ng-model="mainCtrl.newRoast.time_to_first_crack_start">
+				<input type="text" name="temp_at_first_crack_start" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_first_crack_start"></p>
 
-				<p>1st Crack End: <input type="text" size="8" name="time_to_first_crack_end" ng-model="formdata.time_to_first_crack_end">
-				<input type="text" name="temp_at_first_crack_end" placeholder="temp" ng-model="formdata.temp_at_first_crack_end"></p>
+				<p>1st Crack End: <input type="text" size="8" name="time_to_first_crack_end" ng-model="mainCtrl.newRoast.time_to_first_crack_end">
+				<input type="text" name="temp_at_first_crack_end" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_first_crack_end"></p>
 
-				<p>2nd Crack Begin: <input type="text" size="8" name="time_to_second_crack_start" ng-model="formdata.time_to_second_crack_start">
-				<input type="text" name="temp_at_second_crack_start" placeholder="temp" ng-model="formdata.temp_at_second_crack_start"></p>
+				<p>2nd Crack Begin: <input type="text" size="8" name="time_to_second_crack_start" ng-model="mainCtrl.newRoast.time_to_second_crack_start">
+				<input type="text" name="temp_at_second_crack_start" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_second_crack_start"></p>
 
-				<p>2nd Crack End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="formdata.time_to_second_crack_end">
-				<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="formdata.temp_at_second_crack_end"></p>
+				<p>2nd Crack End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="mainCtrl.newRoast.time_to_second_crack_end">
+				<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_second_crack_end"></p>
 
-				<p>Drop: <input type="text" size="8" name="time_at_drop" ng-model="formdata.time_at_drop">
-				<input type="text" name="temp_at_drop" placeholder="temp" ng-model="formdata.temp_at_drop"></p>
+				<p>Drop: <input type="text" size="8" name="time_at_drop" ng-model="mainCtrl.newRoast.time_at_drop">
+				<input type="text" name="temp_at_drop" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_drop"></p>
 
-				<p><textarea rows="4" cols="50" name="roast_notes" placeholder="Roast Notes" ng-model="formdata.roast_notes"></textarea></p>
+				<p><textarea rows="4" cols="50" name="roast_notes" placeholder="Roast Notes" ng-model="mainCtrl.newRoast.roast_notes"></textarea></p>
 
-				<p><textarea rows="4" cols="50" name="taste_notes" placeholder="Taste Notes" ng-model="formdata.taste_notes"></textarea></p>
+				<p><textarea rows="4" cols="50" name="taste_notes" placeholder="Taste Notes" ng-model="mainCtrl.newRoast.taste_notes"></textarea></p>
 
 				<div id="temp_curve_inputs">
 				<ul>
-					<li><input type="text" size="2" name="0" placeholder="0" ng-model="formdata.temp_curve[0]"></li>
-					<li><input type="text" size="2" name="1" placeholder="1" ng-model="formdata.temp_curve[1]"></li>
-					<li><input type="text" size="2" name="2" placeholder="2" ng-model="formdata.temp_curve[2]"></li>
-					<li><input type="text" size="2" name="3" placeholder="3" ng-model="formdata.temp_curve[3]"></li>
-					<li><input type="text" size="2" name="4" placeholder="4" ng-model="formdata.temp_curve[4]"></li>
-					<li><input type="text" size="2" name="5" placeholder="5" ng-model="formdata.temp_curve[5]"></li>
-					<li><input type="text" size="2" name="6" placeholder="6" ng-model="formdata.temp_curve[6]"></li>
+					<li><input type="text" size="2" name="0" placeholder="0" ng-model="mainCtrl.newRoast.temp_curve[0]"></li>
+					<li><input type="text" size="2" name="1" placeholder="1" ng-model="mainCtrl.newRoast.temp_curve[1]"></li>
+					<li><input type="text" size="2" name="2" placeholder="2" ng-model="mainCtrl.newRoast.temp_curve[2]"></li>
+					<li><input type="text" size="2" name="3" placeholder="3" ng-model="mainCtrl.newRoast.temp_curve[3]"></li>
+					<li><input type="text" size="2" name="4" placeholder="4" ng-model="mainCtrl.newRoast.temp_curve[4]"></li>
+					<li><input type="text" size="2" name="5" placeholder="5" ng-model="mainCtrl.newRoast.temp_curve[5]"></li>
+					<li><input type="text" size="2" name="6" placeholder="6" ng-model="mainCtrl.newRoast.temp_curve[6]"></li>
 				</ul>
 				</div>
 
@@ -65,14 +75,14 @@
 			</div>
 
 			<!-- addRoast() ADDS THE NEW ROAST -->
-			<p><button type="submit" class="btn btn-primary btn-lg" ng-click="addRoast()">ADD ROAST</button></p>
+			<p><button type="submit" class="btn btn-primary btn-lg" ng-click="mainCtrl.addRoast()">ADD ROAST</button></p>
 		</form>
 	</div>
 
 
 	<!-- SHOW ROASTS -->
-	<div class="roast-list" ng-repeat="roast in roasts">
-		<a ng-click="deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
+	<div class="roast-list" ng-repeat="roast in mainCtrl.roasts">
+		<a ng-click="mainCtrl.deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
 		<div style="padding-left:42px;">
 			<ul >
 				<li>
@@ -90,7 +100,23 @@
 			</ul>
 		</div>
 	</div>	
-	
+
+	<!-- {{mainCtrl.whatever}}</br>
+	{{mainCtrl.roasts}} -->
+
+
+
+	<!-- TEST CHARTS -->
+	<!-- <div ng-app='nvd3TestApp' ng-controller="ExampleCtrl">
+		<nvd3-line-chart
+	        data="exampleData"
+	        showXAxis="true"
+	        showYAxis="true"
+	        tooltips="true"
+	        interactive="true">
+	    </nvd3-line-chart>
+	    and something
+	</div> -->
 
 	<!-- <div ng-view></div> -->
 
