@@ -1,3 +1,1 @@
-Here are some edits to the README file!!
-
-And here are even more edits!
+This is a very rough work in progress of my building a basic MEAN stack app. This is a roaster log app, but really I'm just getting used to the core functionality of all the parts of the stack.

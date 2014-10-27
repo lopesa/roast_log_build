@@ -1,0 +1,1 @@
+angular.module('roastLogApp', ['ngRoute', 'CRUDservice', 'RoastLogAppCtrl']);

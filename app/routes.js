@@ -3,7 +3,6 @@ module.exports = function(app) {
 	// get all roasts
 	app.get('/api/roasts', function(req, res){
 
-		
 		var roasts = req.coll;
 
 		var promise = roasts.find();
@@ -21,7 +20,6 @@ module.exports = function(app) {
 	app.post('/api/roasts', function(req, res) {
 
 		console.log('got here in routes');
-		//console.log(req.body);
 		
 		var roasts = req.coll;
 
@@ -35,16 +33,7 @@ module.exports = function(app) {
 			}
 			res.json(doc);
 		});
-
-		// roasts.insert(newRoast, function(err, success) {
-		// 	if (err) throw err;
-
-		// 	//console.log(success);
-		// });
 	});
-
-
-
 
 
 	//delete a roast
@@ -62,12 +51,5 @@ module.exports = function(app) {
 			}
 			res.json(doc);
 		});
-		
-		// roasts.remove({_id:roastIDToRemove}, function(err, success) {
-			
-		// 	if(err) throw err;
-		
-		// });
 	});
 };
-

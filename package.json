@@ -6,7 +6,6 @@
     "karma": "*",
     "karma-jasmine": "*",
     "karma-chrome-launcher": "0",
-    "mongoose": "latest",
     "monk": "*"
   },
   "devDependencies": {
