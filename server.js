@@ -5,6 +5,7 @@ var router         = express.Router();
 var monk           = require('monk');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+var multipart      = require('connect-multiparty');
 
 // configuration ===========================================
 	
@@ -26,6 +27,11 @@ app.use(function(req,res,next){
   req.coll = coll;
   next();
 });
+
+//do someshit having to do with uploading
+app.use(multipart({
+    uploadDir: config.tmp
+}));
 
 
 // get all data/stuff of the body (POST) parameters ========

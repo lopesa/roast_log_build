@@ -52,4 +52,16 @@ module.exports = function(app) {
 			res.json(doc);
 		});
 	});
+
+	//upload a photo
+	app.put('api/roasts', function(req, res) {
+		var data = _.pick(req.body, 'type')
+        , uploadPath = path.normalize(cfg.data + '/uploads')
+        , file = req.files.file;
+
+        console.log('got to here in the routes');
+        console.log(file.name); //original name (ie: sunset.png)
+        console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
+	    console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
+	});
 };
