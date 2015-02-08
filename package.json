@@ -6,7 +6,11 @@
     "karma": "*",
     "karma-jasmine": "*",
     "karma-chrome-launcher": "0",
-    "monk": "*"
+    "monk": "*",
+    "body-parser": "*",
+    "express": "*",
+    "method-override": "*",
+    "connect-multiparty": "*"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
