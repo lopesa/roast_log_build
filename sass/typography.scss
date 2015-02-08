@@ -1,0 +1,41 @@
+@mixin bouffant{
+	font-family: "bouffant",cursive;
+	font-weight: 100;
+	font-style: normal;
+}
+
+@mixin proxima-sans-nova-light{
+	font-family: "proxima-nova-alt-ext-cond", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+@mixin proxima-sans-nova-bold{
+	font-family: "proxima-nova-alt-ext-cond", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+@mixin proxima-sans-nova-black{
+	font-family: "proxima-nova-alt-ext-cond", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+@mixin proxima-sans-nova-black-italic{
+	font-family: "proxima-nova-alt-ext-cond", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+}
+
+@mixin adriane-regular-italic {
+	font-family: "adriane, serif";
+	font-weight: 400;
+	font-style: italic;
+}
+
+@mixin buena-park {
+	font-family: "buena-park", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}

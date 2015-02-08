@@ -1,20 +1,14 @@
 <!-- SHOW ROASTS -->
-<div class="roast-list" ng-repeat="roast in mainCtrl.roasts">
-	<a ng-click="mainCtrl.deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
-	<div style="padding-left:42px;">
-		<ul >
-			<li>
-		      {{roast.bean}}
-		    </li>
-		    <li>
-		      {{roast.roast_date}}
-		    </li>
-		    <li>
-		      {{roast.roaster_program}}
-		    </li>
-		    <li>
+<div class="roast-list" ng-repeat="roast in roasts">
+	<div class="single-roast-card" ng-click="fetchOneRoast(roast._id)">
+		<div class="roast-info-container">
+			<a class='close_button' ng-click="deleteRoast(roast._id)" stop-event='click'>&nbsp;</a>
+			<p class="roast-date">{{roast.roast_date}}</p>
+		    <p class="roast-title">{{roast.bean}}</p>
+		    <img src="{{roast.image_url}}" class="roast-image"/>
+			<!-- <li>
 		    	<span class="temp" ng-repeat="temp in roast.temp_curve">{{temp}}</span>
-		    </li>
-		</ul>
+		    </li> -->
+		</div>
 	</div>
 </div>	

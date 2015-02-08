@@ -1,66 +1,78 @@
+<!-- add roast -->
 <div class="new-roast">
 	<form name="form" novalidate>
 		<div>
 
-			<!-- BIND THIS VALUE TO mainCtrl.newRoast.text IN ANGULAR -->
-			<p><input type="text" name="bean" placeholder="Bean" ng-model="mainCtrl.newRoast.bean"></p>
+			<!-- BIND THIS VALUE TO newRoast.text IN ANGULAR -->
+			<p><input type="text" name="bean" placeholder="Bean" ng-model="newRoast.bean"></p>
 
-			<p><input ui-date ui-date-format="DD, d MM, yy" ng-model="mainCtrl.newRoast.roast_date"></p>
+			<p><input type="text" name="bean" placeholder="Processing Method" ng-model="newRoast.processing"></p>
+
+			<p><input ui-date ui-date-format="DD, d MM, yy" ng-model="newRoast.roast_date" placeholder="Date"></p>
 			
-			<p><input type="text" name="roaster_program" placeholder="Roaster Program" ng-model="mainCtrl.newRoast.roaster_program"></p>
+			<p><input type="text" name="roaster_program" placeholder="Roaster Program" ng-model="newRoast.roaster_program"></p>
 
-			<p>Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" ng-model="mainCtrl.newRoast.roaster_warm"></p>
+			<p>Roaster Warm: <input type="checkbox" name="roaster_warm" value="warm" ng-model="newRoast.roaster_warm"></p>
 
-			<p>Yellow: <input type="text" size="8" name="time_to_yellow" ng-model="mainCtrl.newRoast.time_to_yellow">
-			<input type="text" name="temp_at_yellow" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_yellow"></p>
+			<p>Drop:<input type="text" name="temp_at_drop" placeholder="temp" ng-model="newRoast.temp_at_drop"></p>
 
-			<p>Brown: <input type="text" size="8" name="time_to_brown" ng-model="mainCtrl.newRoast.time_to_brown">
-			<input type="text" name="temp_at_brown" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_brown"></p>
+			<p>Bottom Out: <input type="text" size="8" name="time_at_drop" ng-model="newRoast.time_at_drop">
+			<input type="text" name="temp_at_drop" placeholder="temp" ng-model="newRoast.temp_at_drop"></p>
 
-			<p>1st Crack Begin: <input type="text" size="8" name="time_to_first_crack_start" ng-model="mainCtrl.newRoast.time_to_first_crack_start">
-			<input type="text" name="temp_at_first_crack_start" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_first_crack_start"></p>
+			<p>Yellow: <input type="text" size="8" name="time_to_yellow" ng-model="newRoast.time_to_yellow">
+			<input type="text" name="temp_at_yellow" placeholder="temp" ng-model="newRoast.temp_at_yellow"></p>
 
-			<p>1st Crack End: <input type="text" size="8" name="time_to_first_crack_end" ng-model="mainCtrl.newRoast.time_to_first_crack_end">
-			<input type="text" name="temp_at_first_crack_end" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_first_crack_end"></p>
+			<p>Brown: <input type="text" size="8" name="time_to_brown" ng-model="newRoast.time_to_brown">
+			<input type="text" name="temp_at_brown" placeholder="temp" ng-model="newRoast.temp_at_brown"></p>
 
-			<p>2nd Crack Begin: <input type="text" size="8" name="time_to_second_crack_start" ng-model="mainCtrl.newRoast.time_to_second_crack_start">
-			<input type="text" name="temp_at_second_crack_start" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_second_crack_start"></p>
+			<p>1st Crack Begin: <input type="text" size="8" name="time_to_first_crack_start" ng-model="newRoast.time_to_first_crack_start">
+			<input type="text" name="temp_at_first_crack_start" placeholder="temp" ng-model="newRoast.temp_at_first_crack_start"></p>
 
-			<p>2nd Crack End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="mainCtrl.newRoast.time_to_second_crack_end">
-			<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_second_crack_end"></p>
+			<p>1st Crack End: <input type="text" size="8" name="time_to_first_crack_end" ng-model="newRoast.time_to_first_crack_end">
+			<input type="text" name="temp_at_first_crack_end" placeholder="temp" ng-model="newRoast.temp_at_first_crack_end"></p>
 
-			<p>Drop: <input type="text" size="8" name="time_at_drop" ng-model="mainCtrl.newRoast.time_at_drop">
-			<input type="text" name="temp_at_drop" placeholder="temp" ng-model="mainCtrl.newRoast.temp_at_drop"></p>
+			<p>2nd Crack Begin: <input type="text" size="8" name="time_to_second_crack_start" ng-model="newRoast.time_to_second_crack_start">
+			<input type="text" name="temp_at_second_crack_start" placeholder="temp" ng-model="newRoast.temp_at_second_crack_start"></p>
 
-			<p><textarea rows="4" cols="50" name="roast_notes" placeholder="Roast Notes" ng-model="mainCtrl.newRoast.roast_notes"></textarea></p>
+			<p>2nd Crack End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="newRoast.time_to_second_crack_end">
+			<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="newRoast.temp_at_second_crack_end"></p>
 
-			<p><textarea rows="4" cols="50" name="taste_notes" placeholder="Taste Notes" ng-model="mainCtrl.newRoast.taste_notes"></textarea></p>
+			<p>End: <input type="text" size="8" name="time_to_second_crack_end" ng-model="newRoast.time_to_second_crack_end">
+			<input type="text" name="temp_at_second_crack_end" placeholder="temp" ng-model="newRoast.temp_at_second_crack_end"></p>
+
+			
+
+			<p><textarea rows="4" cols="50" name="roast_notes" placeholder="Roast Notes" ng-model="newRoast.roast_notes"></textarea></p>
+
+			<p><textarea rows="4" cols="50" name="taste_notes" placeholder="Taste Notes" ng-model="newRoast.taste_notes"></textarea></p>
 
 			<div id="temp_curve_inputs">
 			<ul>
-				<li><input type="text" size="2" name="0" placeholder="0" ng-model="mainCtrl.newRoast.temp_curve[0]"></li>
-				<li><input type="text" size="2" name="1" placeholder="1" ng-model="mainCtrl.newRoast.temp_curve[1]"></li>
-				<li><input type="text" size="2" name="2" placeholder="2" ng-model="mainCtrl.newRoast.temp_curve[2]"></li>
-				<li><input type="text" size="2" name="3" placeholder="3" ng-model="mainCtrl.newRoast.temp_curve[3]"></li>
-				<li><input type="text" size="2" name="4" placeholder="4" ng-model="mainCtrl.newRoast.temp_curve[4]"></li>
-				<li><input type="text" size="2" name="5" placeholder="5" ng-model="mainCtrl.newRoast.temp_curve[5]"></li>
-				<li><input type="text" size="2" name="6" placeholder="6" ng-model="mainCtrl.newRoast.temp_curve[6]"></li>
+				<li><input type="text" size="2" name="0" placeholder="0" ng-model="newRoast.temp_curve[0]"></li>
+				<li><input type="text" size="2" name="1" placeholder="1" ng-model="newRoast.temp_curve[1]"></li>
+				<li><input type="text" size="2" name="2" placeholder="2" ng-model="newRoast.temp_curve[2]"></li>
+				<li><input type="text" size="2" name="3" placeholder="3" ng-model="newRoast.temp_curve[3]"></li>
+				<li><input type="text" size="2" name="4" placeholder="4" ng-model="newRoast.temp_curve[4]"></li>
+				<li><input type="text" size="2" name="5" placeholder="5" ng-model="newRoast.temp_curve[5]"></li>
+				<li><input type="text" size="2" name="6" placeholder="6" ng-model="newRoast.temp_curve[6]"></li>
 			</ul>
 			</div>
 
 			<!-- <div ng-controller="dfUpload as subCtrl">
 				<input type="file" ng-model="subCtrl.imageUpload" ng-file-select="onFileSelect($files)">
 			</div> -->
+			<div ng-controller="dfUpload">
+				<input type="file" ng-model='files' ng-file-select="onFileSelect($files)">
+			</div>
 
-			<input type="file" name="hasName" file-input="files">
-
+			<p><input ui-date ui-date-format="DD, d MM, yy" ng-model="newRoast.photo_date" placeholder="Date photo taken"></p>
 
 
 		</div>
 
 		<!-- addRoast() ADDS THE NEW ROAST -->
-		<p><button ng-click="mainCtrl.test	()">ADD ROAST</button></p>
-		<p><button type="submit" ng-click="mainCtrl.addRoast()">ADD ROAST</button></p>
+		<!-- <p><button ng-click="test()">test</button></p> -->
+		<p><button type="submit" ng-click="addRoast()">ADD ROAST</button></p>
 	</form>
 </div>
 

@@ -7,50 +7,62 @@
   <link rel="stylesheet" href="./vendors/nv.d3.css">
 
   <link rel="stylesheet" href="./vendors/smoothness/jquery-ui.css">
+
+  <script src="//use.typekit.net/qbo3cja.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
   
 </head>
-<body ng-controller="roastLogAppCtrl as mainCtrl">
+<body ng-controller="roastLogAppCtrl">
 
 	
 	<!-- FORM TO LOG A NEW ROAST -->
 
-<!-- 	<div ng-view></div>
- -->
-	<div class="overlay">
+
+	<!-- <div class="overlay">
 		<div class="test-button-container">
 			<div class="test-button">
 				<div class="test-button-text">TEST</div>
 			</div>
 		</div>
+	</div> -->
+	<div class="outer-container">
+		<div class="header">
+			<ul>
+				<li>
+					<!-- <a href="#" ng-click="addRoastPanel.show = !addRoastPanel.show">Add New Roast</a> -->
+					<a href="/#/add_roast">Add New Roast</a>
+				</li>
+				<li>
+					<a href="/#/">Show All Roasts</a>
+				</li>
+			</ul>
+		</div>
+
+		<div ng-view></div>
 	</div>
 
 	<!-- SHOW ROASTS -->
-	<div class="roast-list" ng-repeat="roast in mainCtrl.roasts">
-		<a ng-click="mainCtrl.deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
-		<div style="padding-left:42px;">
-			<ul >
-				<li>
-			      {{roast.bean}}
-			    </li>
-			    <li>
-			      {{roast.roast_date}}
-			    </li>
-			    <li>
-			      {{roast.roaster_program}}
-			    </li>
-			    <li>
-			    	<span class="temp" ng-repeat="temp in roast.temp_curve">{{temp}}</span>
-			    </li>
-			</ul>
+	<!-- <div class="roast-list">
+		<div class="single-roast animate-repeat" ng-repeat="roast in roasts">
+			<div class="single-roast-card">
+				<div class="roast-info-container">
+					<a ng-click="deleteRoast(roast._id)" class='close_button'>&nbsp;</a>
+					<p class="roast-date">{{roast.roast_date}}</p>
+				    <p class="roast-title">{{roast.bean}}</p>
+				    <img src="{{roast.image_url}}" class="roast-image"/>
+				 	<li>
+				    	<span class="temp" ng-repeat="temp in roast.temp_curve">{{temp}}</span>
+				    </li> 
+	 			</div>
+			</div>
 		</div>
-	</div>	
+	</div>	 -->
 
-	<h4><a href="#" ng-click="mainCtrl.show = !mainCtrl.show">toggle add tab</a></h4>
 	
-	<div class="new-roast-container" ng-show="mainCtrl.show">
+	<!-- <div class="new-roast-container" ng-show="addRoastPanel.show" ng-init="addRoastPanel.show=true">
 		<div ng-include="'views/add_roast.html'"></div>
 	</div>
-
+ -->
 
 	
 	<!-- {{mainCtrl.whatever}}</br>
@@ -69,6 +81,7 @@
 	    </nvd3-line-chart>
 	    and something
 	</div> -->
+	<script src="livereload.js"></script>
 	<script src="./vendors/angular-file-upload-html5-shim.js"></script> 
 	<script src="./vendors/jquery.min.js"></script>
 	<script src="./vendors/jquery-ui.min.js"></script>

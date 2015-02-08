@@ -6,6 +6,7 @@ var monk           = require('monk');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var multipart      = require('connect-multiparty');
+var path           = require('path');
 
 // configuration ===========================================
 	
@@ -19,6 +20,8 @@ var port = process.env.PORT || 8080; // set our port. should move this to the co
 //connect to db with monk
 var db              = monk(config.url);
 var coll			= db.get('roasts');
+
+
 
 
 //Make our db and collection accessible to our router

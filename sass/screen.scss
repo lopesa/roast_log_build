@@ -2,20 +2,55 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
-@import "compass/css3";
 @import "compass/reset";
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
 
 @import "palette";
+@import "susy";
+@import "breakpoint";
+@import "grid";
+@import "typography";
 
 
-p {
-	margin: 20px 50px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: .9em;
-	color: $base-text;
-	// font-style: normal;
+
+.outer-container {
+	@include container(1000px);
+	// @include layout($main-container-large);
 }
+
+
+.header {
+	@include proxima-sans-nova-bold;
+	// @include bouffant;
+	font-size: 1.3em;
+	@include span(4 narrow);
+	margin-left: gutter();
+	margin-bottom:15px;
+	height: 50px;
+	background-color: $headerBg;
+	line-height:50px;
+	letter-spacing: .05em;
+	
+	li {
+		//@include span(1);
+		display: inline;
+		margin-left: gutter(2);
+	}
+
+	a {
+		text-decoration: none;
+		color:$headerFont;
+	}
+}
+
+// p {
+// 	margin: 20px 50px;
+// 	font-family: Helvetica, Arial, sans-serif;
+// 	font-size: .9em;
+// 	color: $base-text;
+// 	// font-style: normal;
+// }
 
 button {
 	width: 200px;
@@ -34,12 +69,21 @@ button {
 	float: left;
 	margin-top: 25px;
 	margin-left: 25px;
-	width: 40%;
+	// width: 40%;
+	p {
+		margin-bottom:5px;
+		@include proxima-sans-nova-light;
+		font-size: 1.2em;
+		color: $midGrey;
+	}
 }
 
 .new-roast-container {
 	margin-left: 0px;
 	opacity: 100;
+	position: absolute;
+	z-index: 5;
+	width: 500px;
 }
 
 .new-roast-container {
@@ -64,29 +108,111 @@ button {
 	background-image: url('data:image/svg+xml;charset=US-ASCII,<%3Fxml%20version%3D"1.0"%20encoding%3D"utf-8"%3F><!DOCTYPE%20svg%20PUBLIC%20"-%2F%2FW3C%2F%2FDTD%20SVG%201.1%20Tiny%2F%2FEN"%20"http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11-tiny.dtd"><svg%20version%3D"1.1"%20baseProfile%3D"tiny"%20id%3D"Layer_1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20xmlns%3Axlink%3D"http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink"%20%20x%3D"0px"%20y%3D"0px"%20width%3D"25px"%20height%3D"25px"%20viewBox%3D"0%200%2025%2025"%20xml%3Aspace%3D"preserve"><style%20type%3D"text%2Fcss">circle%2C%20ellipse%2C%20line%2C%20path%2C%20polygon%2C%20polyline%2C%20rect%2C%20text%20%7B%20fill%3A%20%23999999%20!important%3B%20%7D<%2Fstyle><polygon%20fill-rule%3D"evenodd"%20points%3D"16.667%2C12.5%2016.667%2C12.5%2025.001%2C4.167%2020.834%2C0%2012.5%2C8.333%204.167%2C0%200%2C4.167%208.334%2C12.5%20%208.334%2C12.5%208.334%2C12.5%200%2C20.833%204.167%2C25%2012.501%2C16.667%2020.834%2C25%2025.001%2C20.833%2016.667%2C12.5%20"%2F><%2Fsvg>');
 	background-repeat: no-repeat;
 	padding-right: 8px;
-	padding-top:10px;
+	padding-top:5px;
+	// margin-top: 10px;
+	// padding-bottom:10px;
 	padding-left: 8px;
 	background-size: 16px;
+	// margin-left:-30px;
 }
 
-.roast-list {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: .9em;
-	color: $base-text;
-	float: right;
-	margin-top: 25px;
-	margin-right: 25px;
-	width: 55%;
+// .single-roast {
+// 	@include span(2);
+// 	@include breakpoint($main-breakpoint) {
+// 		@include span(1);
+// 	}
+// }
 
-	li {
-		margin-bottom: .2em;
+.single-roast-detail {
+	@include proxima-sans-nova-light;
+	@include span(2);
+	margin-left: gutter();
+	margin-right: gutter();
+}
+
+.single-roast-card {
+	@include span(2);
+	margin-left: gutter();
+	margin-right: gutter();
+	@include breakpoint($main-breakpoint) {
+		margin-left: gutter();
+		margin-right: gutter();
+		@include span(1 narrow);
 	}
+	// @include container;
+	background-color: $single-roast-bg;
+	border-style: solid;
+	border-color: $single-roast-bg-border;
+	border-width: 1px;
+	height: 300px;
+	margin-bottom:20px;	
+	// @include box-shadow($warmLightMidGrey 1px 1px 8px);
+	cursor: pointer;
 
 	.close_button {
-		float:left;
-		margin:0px 10px;
+		float:right;
+		margin:0px -7px 0px;
+		// @include span(2 of 12);
+		// display: inline-block;
 	}
 }
+
+.roast-info-container {
+	@include proxima-sans-nova-light;
+}
+
+.roast-title {
+	//@include container(100%);
+	//@include span(10 of 12);
+	// @include span(10 of 12);
+	// margin-left: span(1 of 12);
+	// margin-bottom: 5px;
+	margin-top: 15px;
+	// padding-top: 10px;
+	@include bouffant;
+	font-size: 2.7em;
+	color: $roast-title;
+	line-height: .8em;
+}
+
+.roast-date {
+	// @include span(10 of 12);
+	// margin-left: span(1 of 12);
+	margin-top:10px;
+	font-size:1.1em;
+	color: $roastDate;
+}
+
+.roast-image {
+	//@include container(100%);
+	// @include span(10 of 12);
+	// margin-left: span(1 of 12);
+	margin-top:15px;
+	width:100%
+	// @include container(100%);
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+  -webkit-transition:all linear 0.5s;
+  transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+  opacity:0;
+  // max-height:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity:1;
+  // max-height:40px;
+}
+
 
 #temp_curve_inputs {
 	ul {
@@ -146,8 +272,6 @@ button {
 	//@include display-flex(inline-flex);
 	//@include align-items(center);
 }
-
-
 
 
 

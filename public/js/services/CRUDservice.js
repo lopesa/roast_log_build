@@ -6,6 +6,11 @@ angular.module('CRUDservice', []).factory('CRUD', ['$http', function($http) {
 			return $http.get('/api/roasts');
 		},
 
+		// call to get one roasts
+		getRoast : function(id) {
+			return $http.get('/api/roasts/' + id);
+		},
+
 		// call to POST and create a new roast
 		addRoast : function(roastData) {
 			return $http.post('/api/roasts', roastData);

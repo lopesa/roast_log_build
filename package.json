@@ -10,11 +10,16 @@
   },
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-contrib-jshint": "latest",
-    "jshint-stylish": "latest",
-    "grunt-contrib-uglify": "latest",
-    "grunt-contrib-less": "latest",
+    "grunt-concurrent": "^1.0.0",
     "grunt-contrib-cssmin": "latest",
-    "grunt-contrib-watch": "latest"
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-node-inspector": "^0.1.5",
+    "grunt-nodemon": "^0.3.0",
+    "grunt-shell": "^1.1.1",
+    "jshint-stylish": "latest",
+    "open": "latest"
   }
 }

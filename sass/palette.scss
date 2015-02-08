@@ -11,11 +11,27 @@ $yellow: #ffff00;
 
 //expanded colors
 $darkgrey: #333333;
+$midGrey: #555555;
+$warmLightMidGrey: #a6a5a0;
 $lightblue: #001eff;
 $lightred: #ff0000;
 $orange: #ff9f46;
+$umber: #7c2f20;
+$lightUmber: lighten($umber, 67%);
+$lightWarmGrey: #f6f4f6;
+$darkYellowGrey: #74736c;
+$slateBlue: #386e90;
+$midYellowOrange: #f9db86;
+$mossyGreen: #406f1d;
+$jadeGreen: #199a74;
 
 
 //color USAGE definitions
-$base-text: $lightred;
- 
+$base-text: $midGrey;
+$roast-title: $umber;
+$roastDate: $midGrey;
+$single-roast-bg: desaturate($lightUmber, 30%);
+$single-roast-bg-border: $darkYellowGrey;
+$headerBg: $jadeGreen;
+$headerFont: $white;
+
