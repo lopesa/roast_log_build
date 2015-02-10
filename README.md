@@ -23,6 +23,9 @@ css files are inlcuded so feel free to just use them, although they may be out o
 
 ####install vendor dependencies
 	bower install
+	
+####start server
+	grunt nodemon
 
 ##TO DO
 
