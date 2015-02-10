@@ -1,7 +1,6 @@
 .sass-cache/
-bower_components/
 node_modules/
 public/css/
-public/vendors/
-.idea
+public/vendor/
+public/img/roasts/
 karma.conf.js
