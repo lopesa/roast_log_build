@@ -1,7 +1,21 @@
 <!-- single roast detail -->
 <div class="single-roast-detail">
 <!-- hello single roast -->
+	<!-- <div id="modal"></div> -->
+	
+	
+	
 	<p class="roast-date">{{singleRoast.roast_date}}</p>
     <p class="roast-title">{{singleRoast.bean}}</p>
-    <img src="{{singleRoast.image_url}}" class="roast-image"/>
+    <!-- <div modal> -->
+	    <img src="{{singleRoast.image_url}}" class="roast-image" ng-click='showModal()'/>
+    <!-- </div> -->
+
+    <!-- imported from tutorial -->
+	<!-- <button ng-click='showModal()'>Open Modal Dialog</button> -->
+	<modal-dialog show='modalShown' width='90%' height='90%'>
+	  <img src="{{singleRoast.image_url}}" style="width:100%; height:100%;">
+	  <!-- <p>Modal Content Goes here<p> -->
+	</modal-dialog>
+	<!-- end imported -->
 </div>
