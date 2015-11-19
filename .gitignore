@@ -4,3 +4,8 @@ public/css/
 public/vendor/
 public/img/roasts/
 karma.conf.js
+coffee-app-file-upload.credentials.csv
+.aws
+.env
+Gemfile.lock
+.rebooted

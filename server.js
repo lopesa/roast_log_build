@@ -7,13 +7,17 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var multipart      = require('connect-multiparty');
 var path           = require('path');
+var AWS            = require('aws-sdk');
 
 // configuration ===========================================
 	
 // config file
 var config = require('./config/db'); //database location only right now
-
 var port = process.env.PORT || 8080; // set our port. should move this to the config file
+
+// AWS (s3 bucket) credentials
+// var credentials = new AWS.SharedIniFileCredentials({profile: 'coffee-app-file-upload'});
+// AWS.config.credentials = credentials;
 
 
 // database connection =====================================

@@ -2,27 +2,30 @@ This is my project of building a basic MEAN stack app. This is a roaster log app
 
 
 ####install node dependencies
-
 	npm install
 
-####basic ruby setup (for Compass and Susy) ignore if you have already
+####install vendor dependencies
+	bower install
+
+####the rest of this setup is only if you are going to process scss files
+css files are inlcuded so feel free to just use them instead
+
+basic ruby setup (for Compass and Susy) ignore if you have already
+	
 	update ruby
 	gem update --system
 
 install the ruby package manager "bundler"
-
+	
 	sudo gem install bundle
 
 ####install ruby dependencies from config.rb file
 	bundle install
 
 ####watch for changes to to scss files to signal new rewrites to css files
-css files are inlcuded so feel free to just use them, although they may be out of date
-	
 	compass watch
 
-####install vendor dependencies
-	bower install
+
 
 ##TO DO
 

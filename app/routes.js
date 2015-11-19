@@ -20,6 +20,7 @@ module.exports = function(app) {
 		promise.on('complete', function(err, doc){
 			if(err) {
 				console.log(err);
+				// console.log('farts');
 			}
 			res.json(doc);
 		});
@@ -54,21 +55,25 @@ module.exports = function(app) {
 
 		var newRoast = req.body;
 
+		// guessing this is the image upload chunk
+
 		var tmpPath = this.uploadedFileTmpPath;
 		var targetPath = './public/img/roasts/' + this.uploadedFileName;
 		
 
-		fs.rename(tmpPath, targetPath, function(err) {
-	        if (err) throw err;
-	        fs.unlink(tmpPath, function() {
-	            if (err) throw err;
-	            console.log('File uploaded to: ' + targetPath);
-	    	});
-		});
+		// fs.rename(tmpPath, targetPath, function(err) {
+	 //        if (err) throw err;
+	 //        fs.unlink(tmpPath, function() {
+	 //            if (err) throw err;
+	 //            console.log('File uploaded to: ' + targetPath);
+	 //    	});
+		// });
 		
-		var imageResourcePath = 'img/roasts/' + this.uploadedFileName;
+		// var imageResourcePath = 'img/roasts/' + this.uploadedFileName;
 
-		newRoast.image_url = imageResourcePath;
+		// newRoast.image_url = imageResourcePath;
+
+		//
 
 		
 		
@@ -106,7 +111,9 @@ module.exports = function(app) {
 
 		this.uploadedFileTmpPath = req.files.file.path;
 		console.log(this.uploadedFileTmpPath);
+
 		this.uploadedFileName = req.files.file.name;
+		console.log(this.uploadedFileName);
 
 		res.status(200).send('tmp path and name set to external');
 

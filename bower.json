@@ -28,5 +28,8 @@
     "scrollr": "latest",
     "ng-file-upload": "latest",
     "livereload-js": "latest"
+  },
+  "devDependencies": {
+    "susy": "~2.2.6"
   }
 }
