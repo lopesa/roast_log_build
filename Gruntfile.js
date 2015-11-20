@@ -25,6 +25,22 @@ module.exports = function(grunt) {
       build: ['Grunfile.js', 'public/js/*/*.js']
     },
 
+    jade: {
+        compile: {
+            options: {
+                client: false,
+                pretty: true
+            },
+            files: [ {
+              cwd: "public/jade",
+              src: "**/*.jade",
+              dest: "public",
+              expand: true,
+              ext: ".html"
+            } ]
+        }
+    },
+
 
     //from here: https://github.com/ChrisWren/grunt-nodemon
     concurrent: {
@@ -108,6 +124,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-node-inspector');

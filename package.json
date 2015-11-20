@@ -17,6 +17,7 @@
     "grunt": "~0.4.4",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",

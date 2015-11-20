@@ -3,6 +3,8 @@ node_modules/
 public/css/
 public/vendor/
 public/img/roasts/
+public/views
+public/index.html
 karma.conf.js
 coffee-app-file-upload.credentials.csv
 .aws
