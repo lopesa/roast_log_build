@@ -12,17 +12,17 @@ angular.module('RoastLogAppDirs', [])
  //    		}
  //    	}
  //    }])
-    .directive('rstImageZoom', function() {
-        function link(scope, element) {
-            element.on('click', function() {
-                $('body').prepend('<div style="font-size:3em;position:absolute;z-index:5;height:100%;left:50%;">appended</p>');
-                // console.log('clicked in directive');
-            });
-        }
-        return {
-            link: link
-        };
-    });
+    // .directive('rstImageZoom', function() {
+    //     function link(scope, element) {
+    //         element.on('click', function() {
+    //             $('body').prepend('<div style="font-size:3em;position:absolute;z-index:5;height:100%;left:50%;">appended</p>');
+    //             // console.log('clicked in directive');
+    //         });
+    //     }
+    //     return {
+    //         link: link
+    //     };
+    // });
     // .directive('rstImageZoom', function() {
     //     return {
     //         templateUrl: 'image-popup.tpl.html',
@@ -83,4 +83,3 @@ angular.module('RoastLogAppDirs', [])
     //         templateUrl: 'modal.html'
     //     }
     // });
->>>>>>> 920752538cec0b92a0f2b056589db6870f13333a

@@ -1,176 +1,4 @@
 <!-- add roast -->
-//- .new-roast
-//- div(layout="row")
-	div(flex)
-		form(name="form" novalidate)
-			div
-				p
-					input(type="text"
-						name="bean"
-						placeholder="Roast Title"
-						ng-model="newRoast.bean")
-
-				p 
-					input(type="text"
-						name="bean"
-						placeholder="Processing Method"
-						ng-model="newRoast.processing")
-
-				p
-					input(ui-date
-						ui-date-format="DD, d MM, yy"
-						ng-model="newRoast.roast_date"
-						placeholder="Date")
-				
-				p
-					input(type="text"
-						name="roaster_program"
-						placeholder="Roaster Program"
-						ng-model="newRoast.roaster_program")
-
-				p Roaster Warm:
-					input(type="checkbox"
-						name="roaster_warm"
-						value="warm"
-						ng-model="newRoast.roaster_warm")
-
-				p Drop:
-					input(type="text"
-						name="temp_at_drop"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_drop")
-
-				p Bottom Out:
-					input(type="text"
-						size="8"
-						name="time_at_drop"
-						ng-model="newRoast.time_at_drop")
-					
-					input(type="text"
-						name="temp_at_drop"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_drop")
-
-				p Yellow:
-					input(type="text"
-						size="8"
-						name="time_to_yellow"
-						ng-model="newRoast.time_to_yellow")
-					
-					input(type="text"
-						name="temp_at_yellow"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_yellow")
-
-				p Brown:
-					input(type="text"
-						size="8"
-						name="time_to_brown"
-						ng-model="newRoast.time_to_brown")
-					
-					input(type="text"
-						name="temp_at_brown"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_brown")
-
-				p 1st Crack Begin:
-					input(type="text"
-						size="8"
-						name="time_to_first_crack_start"
-						ng-model="newRoast.time_to_first_crack_start")
-					
-					input(type="text"
-						name="temp_at_first_crack_start"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_first_crack_start")
-
-				p 1st Crack End:
-					input(type="text"
-						size="8"
-						name="time_to_first_crack_end"
-						ng-model="newRoast.time_to_first_crack_end")
-					
-					input(type="text"
-						name="temp_at_first_crack_end"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_first_crack_end")
-
-				p 2nd Crack Begin:
-					input(type="text"
-						size="8"
-						name="time_to_second_crack_start"
-						ng-model="newRoast.time_to_second_crack_start")
-					
-					input(type="text"
-						name="temp_at_second_crack_start"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_second_crack_start")
-
-				p 2nd Crack End:
-					input(type="text"
-						size="8"
-						name="time_to_second_crack_end"
-						ng-model="newRoast.time_to_second_crack_end")
-					
-					input(type="text"
-						name="temp_at_second_crack_end"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_second_crack_end")
-
-				p End:
-					input(type="text"
-						size="8"
-						name="time_to_second_crack_end"
-						ng-model="newRoast.time_to_second_crack_end")
-					
-					input(type="text"
-						name="temp_at_second_crack_end"
-						placeholder="temp"
-						ng-model="newRoast.temp_at_second_crack_end")
-				
-				p
-					textarea(rows="4"
-						cols="50"
-						name="roast_notes"
-						placeholder="Roast Notes"
-						ng-model="newRoast.roast_notes")
-
-				p
-					textarea(rows="4"
-						cols="50"
-						name="taste_notes"
-						placeholder="Taste Notes"
-						ng-model="newRoast.taste_notes")
-
-				#temp_curve_inputs
-				ul
-					li(input type="text" size="2" name="0" placeholder="0" ng-model="newRoast.temp_curve[0]")
-					li(input type="text" size="2" name="1" placeholder="1" ng-model="newRoast.temp_curve[1]")
-					li(input type="text" size="2" name="2" placeholder="2" ng-model="newRoast.temp_curve[2]")
-					li(input type="text" size="2" name="3" placeholder="3" ng-model="newRoast.temp_curve[3]")
-					li(input type="text" size="2" name="4" placeholder="4" ng-model="newRoast.temp_curve[4]")
-					li(input type="text" size="2" name="5" placeholder="5" ng-model="newRoast.temp_curve[5]")
-					li(input type="text" size="2" name="6" placeholder="6" ng-model="newRoast.temp_curve[6]")
-
-				div(ng-controller="dfUpload")
-					input(type="file"
-						ng-model='files'
-						ng-file-select="onFileSelect($files)")
-
-				p
-					input(ui-date
-						ui-date-format="DD, d MM, yy"
-						ng-model="newRoast.photo_date"
-						placeholder="Date photo taken")
-
-			<!-- addRoast() ADDS THE NEW ROAST -->
-			//
-				p
-					button(ng-click="test()">test</button)
-			p
-				button(type="submit" ng-click="addRoast()") ADD ROAST
-
-
 div(ng-controller="addRoastCtrl"
 	layout="column"
 	ng-cloak
@@ -204,65 +32,104 @@ div(ng-controller="addRoastCtrl"
 				md-input-container(flex)
 					label Yellow
 					input(ng-model="newRoast.time.yellow")
+				md-input-container(flex)
+					label Brown
+					input(ng-model="newRoast.time.brown")
+				md-input-container(flex)
+					label 1st Crack Start
+					input(ng-model="newRoast.time.first_crack_start")
+				md-input-container(flex)
+					label 1st Crack End
+					input(ng-model="newRoast.time.first_crack_end")
+				md-input-container(flex)
+					label 2nd Crack Start
+					input(ng-model="newRoast.time.second_crack_start")
+				md-input-container(flex)
+					label End
+					input(ng-model="newRoast.time.end")
+			div(layout layout-sm="column")
+				div(flex) Temp
+				md-input-container(flex)
+					label Bottom
+					input(ng-model="newRoast.temp.bottom")
+				md-input-container(flex)
+					label Yellow
+					input(ng-model="newRoast.temp.yellow")
+				md-input-container(flex)
+					label Brown
+					input(ng-model="newRoast.temp.brown")
+				md-input-container(flex)
+					label 1st Crack Start
+					input(ng-model="newRoast.temp.first_crack_start")
+				md-input-container(flex)
+					label 1st Crack End
+					input(ng-model="newRoast.temp.first_crack_end")
+				md-input-container(flex)
+					label 2nd Crack Start
+					input(ng-model="newRoast.temp.second_crack_start")
+				md-input-container(flex)
+					label End
+					input(ng-model="newRoast.temp.end")
+			div(layout layout-sm="column")
+				div(flex) Temp@
+				md-input-container(flex)
+					label 0
+					input(ng-model="newRoast.temp_per_minute[0]")
+				md-input-container(flex)
+					label 1
+					input(ng-model="newRoast.temp_per_minute[1]")
+				md-input-container(flex)
+					label 2
+					input(ng-model="newRoast.temp_per_minute[2]")
+				md-input-container(flex)
+					label 3
+					input(ng-model="newRoast.temp_per_minute[3]")
+				md-input-container(flex)
+					label 4
+					input(ng-model="newRoast.temp_per_minute[4]")
+				md-input-container(flex)
+					label 5
+					input(ng-model="newRoast.temp_per_minute[5]")
+				md-input-container(flex)
+					label 6
+					input(ng-model="newRoast.temp_per_minute[6]")
+				md-input-container(flex)
+					label 7
+					input(ng-model="newRoast.temp_per_minute[7]")
+				md-input-container(flex)
+					label 8
+					input(ng-model="newRoast.temp_per_minute[8]")
+				md-input-container(flex)
+					label 9
+					input(ng-model="newRoast.temp_per_minute[9]")
+				md-input-container(flex)
+					label 10
+					input(ng-model="newRoast.temp_per_minute[10]")
+				md-input-container(flex)
+					label 11
+					input(ng-model="newRoast.temp_per_minute[11]")
+				md-input-container(flex)
+					label 12
+					input(ng-model="newRoast.temp_per_minute[12]")
+				md-input-container(flex)
+					label 13
+					input(ng-model="newRoast.temp_per_minute[13]")
+				md-input-container(flex)
+					label 14
+					input(ng-model="newRoast.temp_per_minute[14]")
+				md-input-container(flex)
+					label 15
+					input(ng-model="newRoast.temp_per_minute[15]")
+			div(layout layout-sm="column")
+				div(flex="50")
+					img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
+				div(flex="50")
+					md-input-container(class="md-block")
+						label Roast Notes
+						textarea(ng-model="newRoast.roast_notes" columns="1" md-maxlength="450" rows="1")
+					md-input-container(class="md-block")
+						label Taste Notes
+						textarea(ng-model="newRoast.taste_notes" columns="1" md-maxlength="450" rows="1")
+
 
 			md-button(class="md-raised md-primary" ng-click="addRoast()") Submit
-//- <md-content layout-padding>
-//-   <form name="userForm">
-//-     <div layout layout-sm="column">
-//-       <md-input-container flex>
-//-         <label>Company (Disabled)</label>
-//-         <input ng-model="user.company" disabled>
-//-       </md-input-container>
-//-       <md-datepicker ng-model="user.submissionDate" md-placeholder="Enter date"></md-datepicker>
-//-     </div>
-//-     <div layout layout-sm="column">
-//-       <md-input-container flex>
-//-         <label>First name</label>
-//-         <input ng-model="user.firstName">
-//-       </md-input-container>
-//-       <md-input-container flex>
-//-         <label>Last Name</label>
-//-         <input ng-model="theMax">
-//-       </md-input-container>
-//-     </div>
-//-     <md-input-container class="md-block">
-//-       <label>Address</label>
-//-       <input ng-model="user.address">
-//-     </md-input-container>
-//-     <md-input-container md-no-float class="md-block">
-//-       <input ng-model="user.address2" placeholder="Address 2">
-//-     </md-input-container>
-//-     <div layout layout-sm="column">
-//-       <md-input-container flex>
-//-         <label>City</label>
-//-         <input ng-model="user.city">
-//-       </md-input-container>
-//-       <md-input-container flex>
-//-         <label>State</label>
-//-         <md-select ng-model="user.state">
-//-           <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-//-             {{state.abbrev}}
-//-           </md-option>
-//-         </md-select>
-//-       </md-input-container>
-//-       <md-input-container flex>
-//-         <label>Postal Code</label>
-//-         <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
-//-                required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-//-         <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
-//-           <div ng-message="required" class="my-message">You must supply a postal code.</div>
-//-           <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
-//-             code.
-//-           </div>
-//-           <div ng-message="md-maxlength" class="my-message">
-//-             Don't use the long version silly...we don't need to be that specific...
-//-           </div>
-//-         </div>
-//-       </md-input-container>
-//-     </div>
-//-     <md-input-container class="md-block">
-//-       <label>Biography</label>
-//-       <textarea ng-model="user.biography" columns="1" md-maxlength="150" rows="5"></textarea>
-//-     </md-input-container>
-//-   </form>
-//- </md-content>
