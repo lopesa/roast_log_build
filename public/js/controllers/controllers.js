@@ -5,7 +5,20 @@ angular.module('RoastLogAppCtrl', [])
 		$scope.roasts = [];
 		// $scope.newRoast = {};
 		$scope.singleRoast = {};
-		// $scope.files = {} ;
+		
+		$scope.files = {} ;
+
+		//modal
+		$scope.modalShown = false;
+		// $scope.toggleModal = function() {
+		// 	$scope.modalShown = !$scope.modalShown;
+		// };
+
+		$scope.showModal = function() {
+            this.modalShown = true;
+          };
+
+>>>>>>> 920752538cec0b92a0f2b056589db6870f13333a
 
 		//this is the main get roasts function that is invoked in the other functions that follow
 		//the .then stuff is to deal with the promise system.

@@ -25,8 +25,6 @@ install the ruby package manager "bundler"
 ####watch for changes to to scss files to signal new rewrites to css files
 	compass watch
 
-
-
 ##TO DO
 
 * image zoomer  
