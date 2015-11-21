@@ -40,7 +40,18 @@ module.exports = function(grunt) {
             } ]
         }
     },
-
+    
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'sass',
+          src: ['*.scss'],
+          dest: 'public/css',
+          ext: '.css'
+        }]
+      }
+    },
 
     //from here: https://github.com/ChrisWren/grunt-nodemon
     concurrent: {
@@ -92,13 +103,29 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      server: {
-        files: ['.rebooted'],
-        options: {
+      options: {
           livereload: true
-        }
-      } 
+          // livereload: {
+          //   host: 'localhost',
+          //   port: 35729
+          // },
+      },
+      server: {
+        files: ['.rebooted']
+      },
+      css: {
+        files: 'sass/**/*.scss',
+        tasks: ['sass']
+      },
+      templates: {
+        files: 'public/jade/**/*.jade',
+        tasks: ['jade']
+      }
     }
+
+
+
+
 
 
     // configure uglify to minify js files -------------------------------------
@@ -121,12 +148,15 @@ module.exports = function(grunt) {
   // we can only load these if they are in our package.json
   // make sure you have run npm install so our app can find these
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  // grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-node-inspector');
   grunt.loadNpmTasks('grunt-concurrent');
+  //
+  grunt.registerTask('default', ['jade', 'sass', 'concurrent']);
 };

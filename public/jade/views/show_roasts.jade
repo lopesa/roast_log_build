@@ -5,7 +5,7 @@ div(class="roast-list" ng-repeat="roast in roasts")
 			a(class='close_button' ng-click="deleteRoast(roast._id)" stop-event='click') &nbsp;
 			p(class="roast-date") {{roast.roast_date}}
 			p(class="roast-title") {{roast.bean}}
-			img(src="{{roast.image_url}}" class="roast-image")
+			img(ng-src="{{roast.image_url}}" class="roast-image")
 
 			//
 				li

@@ -2,39 +2,32 @@
 <html ng-app="roastLogApp">
   <head>
     <link rel="stylesheet" href="./css/screen.css"/>
-    <link rel="stylesheet" href="./vendor/nvd3/nv.d3.css"/><!-- <link rel="stylesheet" href="./vendors/nv.d3.css"> -->
-    <link rel="stylesheet" href="./vendor/jquery-ui/themes/smoothness/jquery-ui.css"/>
+    <link rel="stylesheet" href="./vendor/angular-material/angular-material.css"/>
     <script src="//use.typekit.net/qbo3cja.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
   </head>
   <body ng-controller="roastLogAppCtrl">
-    <div class="outer-container">
-      <div class="header">
-        <ul>
-          <li>
-            <!--a(href="#" ng-click="addRoastPanel.show = !addRoastPanel.show") Add New Roast
-            --><a href="/#/add_roast">Add New Roast</a>
-          </li>
-          <li><a href="/#/">Show All Roasts</a></li>
-        </ul>
-      </div>
-      <div ng-view="ng-view"></div>
+    <div layout="row" layout-align="center center" class="header">
+      <ul flex="flex">
+        <li>
+          <!--a(href="#" ng-click="addRoastPanel.show = !addRoastPanel.show") Add New Roast
+          --><a href="/#/add_roast">Add New Roast</a>
+        </li>
+        <li><a href="/#/">Show All Roasts</a></li>
+      </ul>
     </div>
-    <script src="./vendor/livereload-js/dist/livereload.js"></script>
+    <div flex="flex" ng-view="ng-view"></div>
     <script src="./vendor/ng-file-upload/angular-file-upload-shim.js"> </script>
     <script src="./vendor/jquery/dist/jquery.min.js"></script>
-    <script src="./vendor/jquery-ui/jquery-ui.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
-    <script src="./vendor/ng-file-upload/angular-file-upload.js"></script>
-    <script src="./js/ngCoreExt/angular-animate.min.js"></script>
-    <script src="./vendor/angular-ui-date/src/date.js"></script>
-    <script src="./vendor/d3/d3.js"></script>
-    <script src="./vendor/nvd3/nv.d3.js"></script>
-    <script src="./vendor/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <script src="./vendor/angular/angular.js"></script>
+    <script src="./vendor/angular-route/angular-route.js"></script>
+    <script src="./vendor/angular-animate/angular-animate.js"></script>
+    <script src="./vendor/angular-aria/angular-aria.js"></script>
+    <script src="./vendor/angular-material/angular-material.js"></script>
     <script src="./js/services/CRUDservice.js"></script>
     <script src="./js/directives/directives.js"></script>
     <script src="./js/controllers/controllers.js"></script>
+    <script src="//localhost:35729/livereload.js?LR-verbose"></script>
     <script src="./js/app.js"></script>
   </body>
 </html>

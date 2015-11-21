@@ -1,17 +1,16 @@
 angular.module('RoastLogAppCtrl', [])
 	.controller('roastLogAppCtrl', ['CRUD', '$scope', '$location', function (CRUD, $scope, $location) {
 
-
-
 		//var self = this;
 		$scope.roasts = [];
-		$scope.newRoast = {};
+		// $scope.newRoast = {};
 		$scope.singleRoast = {};
-		$scope.files = {} ;
-
+		// $scope.files = {} ;
 
 		//this is the main get roasts function that is invoked in the other functions that follow
 		//the .then stuff is to deal with the promise system.
+		
+		// return all roasts
 		var fetchRoasts = function() {
 			return CRUD.list().then(function(response) {
 				
@@ -21,11 +20,6 @@ angular.module('RoastLogAppCtrl', [])
 				console.log(errResponse);
 			});
 		};
-
-		
-		//just do it one time when the controller loads
-		fetchRoasts();
-
 
 		//return one roast
 		$scope.fetchOneRoast = function(id) {
@@ -40,8 +34,78 @@ angular.module('RoastLogAppCtrl', [])
 				});
 		};
 		
+		// add a roast
+		// $scope.addRoast = function() {
+		// 	//console.log($scope.newRoast);
+			
+		// 	//newRoast is connected on the form model in the html
+		// 	CRUD.addRoast($scope.newRoast)
+		// 	.then(fetchRoasts)
+		// 	.then(function(response){
+		// 		$scope.newRoast = {} ;
+		// 		$scope.files = {} ;
+		// 	});
+		// };
+
+		//listener for fileupload
+		// $scope.filesChanged = function (elm) {
+		// 	$scope.files=elm.files;
+		// 	//console.log(self.files);
+		// 	$scope.$apply();
+		// };
+
+		$scope.deleteRoast = function(id) {
+
+			CRUD.deleteRoast(id)
+				.then(fetchRoasts)
+				.then(function(response){
+					console.log(response);
+				});
+			//this.stopPropagation();
+		};
+
+		// get all roasts when the controller loads
+		fetchRoasts();
+	}])
+	// =================================
+	//
+	//
+	// add roast controller
+	//
+	//
+	//==================================
+	.controller('addRoastCtrl', ['CRUD', '$scope', function (CRUD, $scope) {
 		
+		$scope.newRoast = {
+			roaster_warm: false,
+			// time: {
+			// 	bottom: "1:30",
+			// 	yellow: "5:00",
+			// 	brown: "8:00",
+			// 	first_crack_start: "9:00",
+			// 	first_crack_end: "10:30",
+			// 	second_crack_start: "11:30",
+			// 	end: "13:00"
+			// },
+			// temp: {
+			// 	drop: 180,
+			// 	bottom: 130,
+			// 	yellow: 230,
+			// 	brown: 300,
+			// 	first_crack_start: 370,
+			// 	first_crack_end: 405,
+			// 	second_crack_start: 415,
+			// 	end: 420
+			// },
+			// temp_per_minute: [180,200,220,240,260,280,300,320,340,360,380,400,420],
+			// roast_notes: "Roast Notes",
+			// taste_notes: "Taste Notes"
+		};
 		
+		$scope.files = {};
+
+
+		// add a roast
 		$scope.addRoast = function() {
 			//console.log($scope.newRoast);
 			
@@ -59,26 +123,6 @@ angular.module('RoastLogAppCtrl', [])
 			$scope.files=elm.files;
 			//console.log(self.files);
 			$scope.$apply();
-		};
-
-		
-		// $scope.test = function() {
-		// 	console.log('I quit if this isn\'t happening');
-		// 	console.log($scope.newRoast.bean);
-		// 	console.log($scope.files);
-		// };
-
-
-		$scope.deleteRoast = function(id) {
-
-			
-			CRUD.deleteRoast(id)
-				.then(fetchRoasts)
-				.then(function(response){
-					console.log(response);
-				});
-
-			//this.stopPropagation();
 		};
 	}])
 	.controller('dfUpload', ['$upload', '$scope', function($upload, $scope){

@@ -20,6 +20,7 @@
     "grunt-contrib-jade": "^0.15.0",
     "grunt-contrib-jshint": "latest",
     "grunt-contrib-less": "latest",
+    "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-node-inspector": "^0.1.5",

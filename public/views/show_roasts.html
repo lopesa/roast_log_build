@@ -3,7 +3,7 @@
   <div ng-click="fetchOneRoast(roast._id)" class="single-roast-card">
     <div class="roast-info-container"><a ng-click="deleteRoast(roast._id)" stop-event="click" class="close_button">&nbsp;</a>
       <p class="roast-date">{{roast.roast_date}}</p>
-      <p class="roast-title">{{roast.bean}}</p><img src="{{roast.image_url}}" class="roast-image"/>
+      <p class="roast-title">{{roast.bean}}</p><img ng-src="{{roast.image_url}}" class="roast-image"/>
       <!--
       li
       	span(class="temp" ng-repeat="temp in roast.temp_curve") {{temp}}

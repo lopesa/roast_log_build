@@ -1,4 +1,4 @@
-angular.module('roastLogApp', ['angularFileUpload', 'ui.date', 'ngRoute', 'ngAnimate', 'CRUDservice', 'RoastLogAppCtrl', 'RoastLogAppDirs'])
+angular.module('roastLogApp', ['ngRoute', 'ngAnimate', 'ngAria', 'ngMaterial', 'CRUDservice', 'RoastLogAppCtrl', 'RoastLogAppDirs'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider.when('/', {
 			templateUrl: 'views/show_roasts.html'
