@@ -8,22 +8,33 @@ div(ng-controller="addRoastCtrl"
 	md-content(layout-padding)
 		form(name="newRoastForm")
 			div(layout layout-sm="column")
-				md-input-container(flex)
-					label Roast Title
-					input(ng-model="newRoast.title")
-				md-input-container(flex)
-					label Roaster Program
-					input(ng-model="newRoast.roaster_program")
-				md-checkbox(ng-model="newRoast.roaster_warm") Preheated: {{newRoast.roaster_warm}}
-				md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date")
-			div(layout layout-sm="column")
-				md-input-container(flex)
-					label Bean Origin
-					input(ng-model="newRoast.bean_origin")
-				md-input-container(flex)
-					label Bean Processing Style
-					input(ng-model="newRoast.bean_processing")
-				md-datepicker(ng-model="newRoast.beans_received" md-placeholder="Beans Received")
+				div(flex="50")
+					md-input-container(flex="90")
+						label Roast Title
+						input(ng-model="newRoast.title")
+					div(layout layout-sm="column")
+						md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date")
+						md-datepicker(ng-model="newRoast.beans_received" md-placeholder="Beans Received")
+					div(layout layout-sm="column")
+						//- md-input-container(flex="40")
+						//- 	label Bean Country of Origin
+						//- 	input(ng-model="newRoast.bean_origin")
+						md-input-container(flex)
+							label Bean Origin
+							md-select(ng-model="newRoast.country")
+								md-option(ng-repeat="country in countries" ng-value="{{country}}") {{country}}
+						md-input-container(flex)
+							label Bean Processing Style
+							input(ng-model="newRoast.bean_processing")
+					div(layout layout-sm="column")
+						md-input-container(flex)
+							label Roaster Program
+							input(ng-model="newRoast.roaster_program")
+						md-input-container(flex)
+							//- label Roaster Preheated:
+							md-checkbox(ng-model="newRoast.roaster_warm") Roaster Preheated: {{newRoast.roaster_warm}}
+				div(flex="50")
+					img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
 			div(layout layout-sm="column")
 				div(flex) Time
 				md-input-container(flex)
@@ -71,7 +82,7 @@ div(ng-controller="addRoastCtrl"
 					label End
 					input(ng-model="newRoast.temp.end")
 			div(layout layout-sm="column")
-				div(flex) Temp@
+				div(flex) Temp / Minute
 				md-input-container(flex)
 					label 0
 					input(ng-model="newRoast.temp_per_minute[0]")
@@ -122,7 +133,7 @@ div(ng-controller="addRoastCtrl"
 					input(ng-model="newRoast.temp_per_minute[15]")
 			div(layout layout-sm="column")
 				div(flex="50")
-					img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
+					//- img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
 				div(flex="50")
 					md-input-container(class="md-block")
 						label Roast Notes

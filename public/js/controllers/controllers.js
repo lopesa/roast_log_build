@@ -90,6 +90,7 @@ angular.module('RoastLogAppCtrl', [])
 		
 		$scope.newRoast = {
 			roaster_warm: false,
+			country: "Bean Origin"
 			// time: {
 			// 	bottom: "1:30",
 			// 	yellow: "5:00",
@@ -113,6 +114,13 @@ angular.module('RoastLogAppCtrl', [])
 			// roast_notes: "Roast Notes",
 			// taste_notes: "Taste Notes"
 		};
+
+		$scope.countries = [
+			"Ethiopia",
+			"Columbia",
+			"Mexico",
+			"Java"
+		];
 		
 		$scope.files = {};
 
