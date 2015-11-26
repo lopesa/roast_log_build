@@ -14,22 +14,10 @@ var path           = require('path');
 var config = require('./config/db'); //database location only right now
 var port = process.env.PORT || 8080; // set our port. should move this to the config file
 
-// AWS (s3 bucket) credentials
-// var credentials = new AWS.SharedIniFileCredentials({profile: 'coffee-app-file-upload'});
-// AWS.config.credentials = credentials;
-
-// var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-// var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-// var S3_BUCKET = process.env.S3_BUCKET
-
-
 // database connection =====================================
 //connect to db with monk
 var db              = monk(config.url);
 var coll			= db.get('roasts');
-
-
-
 
 //Make our db and collection accessible to our router
 app.use(function(req,res,next){
@@ -37,11 +25,6 @@ app.use(function(req,res,next){
   req.coll = coll;
   next();
 });
-
-//do someshit having to do with uploading
-// app.use(multipart({
-//     uploadDir: config.tmp
-// }));
 
 
 // get all data/stuff of the body (POST) parameters ========
