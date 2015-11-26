@@ -6,7 +6,7 @@ angular.module('RoastLogAppCtrl', [])
 		// $scope.newRoast = {};
 		$scope.singleRoast = {};
 		
-		$scope.files = {} ;
+		// $scope.files = {} ;
 
 		//modal
 		$scope.modalShown = false;
@@ -81,19 +81,19 @@ angular.module('RoastLogAppCtrl', [])
 	}])
 	// =================================
 	//
-	//
 	// add roast controller
-	//
 	//
 	//==================================
 	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', function (CRUD, $scope, $http) {
 
-		console.log("newRoast = " + $scope.newRoast);
-		
 		$scope.newRoast = {
+			//////////////////////////////////////
+			//
 			// only need these two live for defaults
 			// the rest are to show what the model looks like
 			// as coming in from the view
+			//
+			//////////////////////////////////////
 			roaster_warm: false,
 			country: "Bean Origin"
 			// time: {
@@ -105,6 +105,10 @@ angular.module('RoastLogAppCtrl', [])
 			// 	second_crack_start: "11:30",
 			// 	end: "13:00"
 			// },
+			// file: {
+			// 	name: "",
+			//	url: ""
+			// }
 			// temp: {
 			// 	drop: 180,
 			// 	bottom: 130,
@@ -130,10 +134,18 @@ angular.module('RoastLogAppCtrl', [])
 		
 		// $scope.files = {};
 
+		// =================================
+		//
+		// https://devcenter.heroku.com/articles/s3-upload-node
+		// https://egghead.io/lessons/angularjs-file-uploads
+		// http://stackoverflow.com/questions/28899005/presigned-aws-s3-put-url-fails-to-upload-from-client-using-jquery
+		// "the key was ensuring that the headers for Content-Type matched exactly"
+		//
+		// =================================
+
 		$scope.getSignedRequest = function(file){
 			// console.log('trigger function in add roast controller');
 			// console.log(file);
-			
 			$http({
 				method: 'get',
 				url: '/sign_s3?file_name=' +file.name+ '&file_type=' +file.type
@@ -149,47 +161,33 @@ angular.module('RoastLogAppCtrl', [])
 				else {
 					console.log("Could not get signed URL.");
 				}
-				// var response = JSON.parse(xhr.responseText);
-				// console.log(response.signed_request, response.url)
-        // upload_file(file, response.signed_request, response.url);
 			}, function (response) {
 				console.log('error uploading');
 			});
 		}
 
 		$scope.uploadFile = function(file, signed_request, url){
-
-			console.log(file);
-			console.log(signed_request);
-			console.log(url);
-			
+			// console.log(file);
+			// console.log(signed_request);
+			// console.log(url);
 			$http({
 				method: 'put',
 				url: signed_request,
 				headers: {
-				// 'x-amz-acl': 'public-read'
 					'x-amz-acl': 'public-read',
 					'Content-Type': 'multipart/form-data'
 				},
 				data: file
 			})
-			// $http({
-			// 	method: 'put',
-			// 	url: url,
-			// 	headers: {
-			// 		// 'x-amz-acl': 'public-read'
-			// 		'x-amz-acl': 'public-read'
-			// 	},
-			// 	data: file
-		 //    // !!!! xhr.setRequestHeader('x-amz-acl', 'public-read');
-			// })
-			// $http.put(signed_request, file)
 			.then(function (response) {
 				if (response.status === 200) {
-					console.log("success uploading, check aws");
-					console.log(url);
-					// document.getElementById("preview").src = url;
-		   //    document.getElementById("avatar_url").value = url;
+					// console.log("success uploading, check aws");
+					// console.log(typeof(url))
+					url = url.replace(/ /g, '+');
+					$scope.newRoast.file.url = url;
+					// console.log(url);
+					document.getElementById("img-preview").src = url;
+					// console.log($scope.newRoast);
 				}
 				else {
 					console.log("failure uploading")
@@ -197,24 +195,7 @@ angular.module('RoastLogAppCtrl', [])
 			});
 		    
 		}
-
-		// function upload_file(file, signed_request, url){
-		//     var xhr = new XMLHttpRequest();
-		//     xhr.open("PUT", signed_request);
-		//     xhr.setRequestHeader('x-amz-acl', 'public-read');
-		//     xhr.onload = function() {
-		//         if (xhr.status === 200) {
-		//             document.getElementById("preview").src = url;
-		//             document.getElementById("avatar_url").value = url;
-		//         }
-		//     };
-		//     xhr.onerror = function() {
-		//         alert("Could not upload file.");
-		//     };
-		//     xhr.send(file);
-		// }
-
-
+		
 		// add a roast
 		$scope.addRoast = function() {
 			//console.log($scope.newRoast);
@@ -223,57 +204,12 @@ angular.module('RoastLogAppCtrl', [])
 			CRUD.addRoast($scope.newRoast)
 			.then(fetchRoasts)
 			.then(function(response){
-				$scope.newRoast = {} ;
+				$scope.newRoast = {
+					roaster_warm: false,
+					country: "Bean Origin"
+				};
 				$scope.files = {} ;
 			});
 		};
 
-		//listener for fileupload - defunct
-		// $scope.filesChanged = function (elm) {
-		// 	$scope.files=elm.files;
-		// 	//console.log(self.files);
-		// 	$scope.$apply();
-		// };
-	}])
-	.controller('dfUpload', ['$upload', '$scope', function($upload, $scope){
-		//console.log('not dead?');
-		$scope.onFileSelect = function($files) {
-			//console.log('but here?');
-			//$files: an array of files selected, each file has name, size, and type.
-			for (var i = 0; i < $files.length; i++) {
-				var file = $files[i];
-
-				console.log(file);
-
-				$scope.upload = $upload.upload({
-					url: '/upload', //upload.php script, node.js route, or servlet url
-					method: 'POST',// or 'PUT',
-				//headers: {'header-key': 'header-value'},
-				//withCredentials: true,
-					//data: {myObj: $scope.files},
-					file: file, // or list of files ($files) for html5 only
-				//fileName: 'doc.jpg' or ['1.jpg', '2.jpg', ...] // to modify the name of the file(s)
-				// customize file formData name ('Content-Disposition'), server side file variable name. 
-				//fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
-				// customize how data is added to formData. See #40#issuecomment-28612000 for sample code
-				//formDataAppender: function(formData, key, val){}
-				}).progress(function(evt) {
-				console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-				}).success(function(data, status, headers, config) {
-				// file is uploaded successfully
-				console.log(data);
-				});
-				//.error(...)
-				//.then(success, error, progress); 
-				// access or attach event listeners to the underlying XMLHttpRequest.
-				//.xhr(function(xhr){xhr.upload.addEventListener(...)})
-			}
-			/* alternative way of uploading, send the file binary with the file's content-type.
-			Could be used to upload files to CouchDB, imgur, etc... html5 FileReader is needed. 
-			It could also be used to monitor the progress of a normal http post/put request with large data*/
-			// $scope.upload = $upload.http({...})  see 88#issuecomment-31366487 for sample code.
-		};
 	}]);
-
-
-

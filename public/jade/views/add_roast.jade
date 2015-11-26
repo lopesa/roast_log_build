@@ -35,16 +35,10 @@ div(ng-controller="addRoastCtrl"
 						//- label Roaster Preheated:
 						md-checkbox(ng-model="newRoast.roaster_warm") Roaster Preheated: {{newRoast.roaster_warm}}
 			div(flex="50")
-				img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
-				md-input-container
-					//- label Choose Image
-					//- input(type="file" id="file_input")
-					input(type="file" file-input="newRoast.files")
-					p(style="color:red;") {{newRoast.files.name}}
-					//- li(ng-repeat="file in newRoast.files") {{file.name}}
-					//- p {{newRoast}}
-					//- p {{newRoast.title}}
-					//- p {{newRoast.imgTitle.name}}
+				img(id="img-preview" ng-src="img/placeholder_roast_img.jpg")
+				md-button(class="fileUpload md-raised") choose image
+					input(type="file" class="upload" file-input="newRoast.file")
+				p {{newRoast.file.name}}
 		div(layout layout-sm="column")
 			div(flex) Time
 			md-input-container(flex)
@@ -143,11 +137,10 @@ div(ng-controller="addRoastCtrl"
 				input(ng-model="newRoast.temp_per_minute[15]")
 		div(layout layout-sm="column")
 			div(flex="50")
-				//- img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
-			div(flex="50")
 				md-input-container(class="md-block")
 					label Roast Notes
 					textarea(ng-model="newRoast.roast_notes" columns="1" md-maxlength="450" rows="1")
+			div(flex="50")
 				md-input-container(class="md-block")
 					label Taste Notes
 					textarea(ng-model="newRoast.taste_notes" columns="1" md-maxlength="450" rows="1")

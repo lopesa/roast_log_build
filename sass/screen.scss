@@ -53,22 +53,47 @@
 // }
 
 
-#imgPreview {
-	width:100%
+#img-preview {
+	width:100%;
+	
 }
 
-button {
-	width: 200px;
-	height: 50px;
-	background-color: #e2b960;
-	color:#FFF;
-	border: 0px;
-	letter-spacing: .2em;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	font-size: .8em;
-	cursor:pointer;
+// #img-upload {
+	// display:none;
+	// opacity: 0;
+// }
+
+// .fileUpload {
+//     position: relative;
+//     overflow: hidden;
+//     margin: 10px;
+// }
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    height: 40px;
+    width: 100%;
 }
+
+// button {
+// 	width: 200px;
+// 	height: 50px;
+// 	background-color: #e2b960;
+// 	color:#FFF;
+// 	border: 0px;
+// 	letter-spacing: .2em;
+// 	font-family: Helvetica, Arial, sans-serif;
+// 	font-weight: bold;
+// 	font-size: .8em;
+// 	cursor:pointer;
+// }
 
 // .new-roast {
 // 	float: left;

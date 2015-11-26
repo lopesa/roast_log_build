@@ -3,7 +3,8 @@ div(layout layout-wrap layout-sm="column")
 	div(ng-repeat="roast in roasts" flex="25")
 		md-content(class="md-padding")
 			md-card
-				img(ng-src="img/placeholder_roast_img.jpg" class="md-card-image" alt="Washed Out")
+				//- img(ng-src="img/placeholder_roast_img.jpg" class="md-card-image" alt="Washed Out")
+				img(ng-src='{{roast.file.url}}' class="md-card-image" alt="Washed Out")
 				md-card-content
 					h2(class="md-title") {{roast.title}}
 					p {{roast.roast_notes}}
