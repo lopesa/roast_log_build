@@ -86,9 +86,14 @@ angular.module('RoastLogAppCtrl', [])
 	//
 	//
 	//==================================
-	.controller('addRoastCtrl', ['CRUD', '$scope', function (CRUD, $scope) {
+	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', function (CRUD, $scope, $http) {
+
+		console.log("newRoast = " + $scope.newRoast);
 		
 		$scope.newRoast = {
+			// only need these two live for defaults
+			// the rest are to show what the model looks like
+			// as coming in from the view
 			roaster_warm: false,
 			country: "Bean Origin"
 			// time: {
@@ -115,6 +120,7 @@ angular.module('RoastLogAppCtrl', [])
 			// taste_notes: "Taste Notes"
 		};
 
+		//dropdown presets
 		$scope.countries = [
 			"Ethiopia",
 			"Columbia",
@@ -122,7 +128,91 @@ angular.module('RoastLogAppCtrl', [])
 			"Java"
 		];
 		
-		$scope.files = {};
+		// $scope.files = {};
+
+		$scope.getSignedRequest = function(file){
+			// console.log('trigger function in add roast controller');
+			// console.log(file);
+			
+			$http({
+				method: 'get',
+				url: '/sign_s3?file_name=' +file.name+ '&file_type=' +file.type
+			})
+			.then(function (response) {
+				if (response.status === 200) {
+					// console.log("response status is 200");
+					// console.log("response.signed_request is " + response.data.signed_request);
+					// console.log("response.url is " + response.data.url)
+					// console.log(response)
+					$scope.uploadFile(file, response.data.signed_request, response.data.url);
+				}
+				else {
+					console.log("Could not get signed URL.");
+				}
+				// var response = JSON.parse(xhr.responseText);
+				// console.log(response.signed_request, response.url)
+        // upload_file(file, response.signed_request, response.url);
+			}, function (response) {
+				console.log('error uploading');
+			});
+		}
+
+		$scope.uploadFile = function(file, signed_request, url){
+
+			console.log(file);
+			console.log(signed_request);
+			console.log(url);
+			
+			$http({
+				method: 'put',
+				url: signed_request,
+				headers: {
+				// 'x-amz-acl': 'public-read'
+					'x-amz-acl': 'public-read',
+					'Content-Type': 'multipart/form-data'
+				},
+				data: file
+			})
+			// $http({
+			// 	method: 'put',
+			// 	url: url,
+			// 	headers: {
+			// 		// 'x-amz-acl': 'public-read'
+			// 		'x-amz-acl': 'public-read'
+			// 	},
+			// 	data: file
+		 //    // !!!! xhr.setRequestHeader('x-amz-acl', 'public-read');
+			// })
+			// $http.put(signed_request, file)
+			.then(function (response) {
+				if (response.status === 200) {
+					console.log("success uploading, check aws");
+					console.log(url);
+					// document.getElementById("preview").src = url;
+		   //    document.getElementById("avatar_url").value = url;
+				}
+				else {
+					console.log("failure uploading")
+				}
+			});
+		    
+		}
+
+		// function upload_file(file, signed_request, url){
+		//     var xhr = new XMLHttpRequest();
+		//     xhr.open("PUT", signed_request);
+		//     xhr.setRequestHeader('x-amz-acl', 'public-read');
+		//     xhr.onload = function() {
+		//         if (xhr.status === 200) {
+		//             document.getElementById("preview").src = url;
+		//             document.getElementById("avatar_url").value = url;
+		//         }
+		//     };
+		//     xhr.onerror = function() {
+		//         alert("Could not upload file.");
+		//     };
+		//     xhr.send(file);
+		// }
 
 
 		// add a roast
@@ -138,12 +228,12 @@ angular.module('RoastLogAppCtrl', [])
 			});
 		};
 
-		//listener for fileupload
-		$scope.filesChanged = function (elm) {
-			$scope.files=elm.files;
-			//console.log(self.files);
-			$scope.$apply();
-		};
+		//listener for fileupload - defunct
+		// $scope.filesChanged = function (elm) {
+		// 	$scope.files=elm.files;
+		// 	//console.log(self.files);
+		// 	$scope.$apply();
+		// };
 	}])
 	.controller('dfUpload', ['$upload', '$scope', function($upload, $scope){
 		//console.log('not dead?');

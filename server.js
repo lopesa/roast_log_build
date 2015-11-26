@@ -7,7 +7,6 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var multipart      = require('connect-multiparty');
 var path           = require('path');
-var AWS            = require('aws-sdk');
 
 // configuration ===========================================
 	
@@ -18,6 +17,10 @@ var port = process.env.PORT || 8080; // set our port. should move this to the co
 // AWS (s3 bucket) credentials
 // var credentials = new AWS.SharedIniFileCredentials({profile: 'coffee-app-file-upload'});
 // AWS.config.credentials = credentials;
+
+// var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+// var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+// var S3_BUCKET = process.env.S3_BUCKET
 
 
 // database connection =====================================
@@ -36,9 +39,9 @@ app.use(function(req,res,next){
 });
 
 //do someshit having to do with uploading
-app.use(multipart({
-    uploadDir: config.tmp
-}));
+// app.use(multipart({
+//     uploadDir: config.tmp
+// }));
 
 
 // get all data/stuff of the body (POST) parameters ========

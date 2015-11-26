@@ -5,142 +5,152 @@ div(ng-controller="addRoastCtrl"
 	class="md-inline-form"
 	flex="80"
 	flex-offset="10")
-	md-content(layout-padding)
-		form(name="newRoastForm")
-			div(layout layout-sm="column")
-				div(flex="50")
-					md-input-container(flex="90")
-						label Roast Title
-						input(ng-model="newRoast.title")
-					div(layout layout-sm="column")
-						md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date")
-						md-datepicker(ng-model="newRoast.beans_received" md-placeholder="Beans Received")
-					div(layout layout-sm="column")
-						//- md-input-container(flex="40")
-						//- 	label Bean Country of Origin
-						//- 	input(ng-model="newRoast.bean_origin")
-						md-input-container(flex)
-							label Bean Origin
-							md-select(ng-model="newRoast.country")
-								md-option(ng-repeat="country in countries" ng-value="{{country}}") {{country}}
-						md-input-container(flex)
-							label Bean Processing Style
-							input(ng-model="newRoast.bean_processing")
-					div(layout layout-sm="column")
-						md-input-container(flex)
-							label Roaster Program
-							input(ng-model="newRoast.roaster_program")
-						md-input-container(flex)
-							//- label Roaster Preheated:
-							md-checkbox(ng-model="newRoast.roaster_warm") Roaster Preheated: {{newRoast.roaster_warm}}
-				div(flex="50")
-					img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
-			div(layout layout-sm="column")
-				div(flex) Time
-				md-input-container(flex)
-					label Bottom
-					input(ng-model="newRoast.time.bottom")
-				md-input-container(flex)
-					label Yellow
-					input(ng-model="newRoast.time.yellow")
-				md-input-container(flex)
-					label Brown
-					input(ng-model="newRoast.time.brown")
-				md-input-container(flex)
-					label 1st Crack Start
-					input(ng-model="newRoast.time.first_crack_start")
-				md-input-container(flex)
-					label 1st Crack End
-					input(ng-model="newRoast.time.first_crack_end")
-				md-input-container(flex)
-					label 2nd Crack Start
-					input(ng-model="newRoast.time.second_crack_start")
-				md-input-container(flex)
-					label End
-					input(ng-model="newRoast.time.end")
-			div(layout layout-sm="column")
-				div(flex) Temp
-				md-input-container(flex)
-					label Bottom
-					input(ng-model="newRoast.temp.bottom")
-				md-input-container(flex)
-					label Yellow
-					input(ng-model="newRoast.temp.yellow")
-				md-input-container(flex)
-					label Brown
-					input(ng-model="newRoast.temp.brown")
-				md-input-container(flex)
-					label 1st Crack Start
-					input(ng-model="newRoast.temp.first_crack_start")
-				md-input-container(flex)
-					label 1st Crack End
-					input(ng-model="newRoast.temp.first_crack_end")
-				md-input-container(flex)
-					label 2nd Crack Start
-					input(ng-model="newRoast.temp.second_crack_start")
-				md-input-container(flex)
-					label End
-					input(ng-model="newRoast.temp.end")
-			div(layout layout-sm="column")
-				div(flex) Temp / Minute
-				md-input-container(flex)
-					label 0
-					input(ng-model="newRoast.temp_per_minute[0]")
-				md-input-container(flex)
-					label 1
-					input(ng-model="newRoast.temp_per_minute[1]")
-				md-input-container(flex)
-					label 2
-					input(ng-model="newRoast.temp_per_minute[2]")
-				md-input-container(flex)
-					label 3
-					input(ng-model="newRoast.temp_per_minute[3]")
-				md-input-container(flex)
-					label 4
-					input(ng-model="newRoast.temp_per_minute[4]")
-				md-input-container(flex)
-					label 5
-					input(ng-model="newRoast.temp_per_minute[5]")
-				md-input-container(flex)
-					label 6
-					input(ng-model="newRoast.temp_per_minute[6]")
-				md-input-container(flex)
-					label 7
-					input(ng-model="newRoast.temp_per_minute[7]")
-				md-input-container(flex)
-					label 8
-					input(ng-model="newRoast.temp_per_minute[8]")
-				md-input-container(flex)
-					label 9
-					input(ng-model="newRoast.temp_per_minute[9]")
-				md-input-container(flex)
-					label 10
-					input(ng-model="newRoast.temp_per_minute[10]")
-				md-input-container(flex)
-					label 11
-					input(ng-model="newRoast.temp_per_minute[11]")
-				md-input-container(flex)
-					label 12
-					input(ng-model="newRoast.temp_per_minute[12]")
-				md-input-container(flex)
-					label 13
-					input(ng-model="newRoast.temp_per_minute[13]")
-				md-input-container(flex)
-					label 14
-					input(ng-model="newRoast.temp_per_minute[14]")
-				md-input-container(flex)
-					label 15
-					input(ng-model="newRoast.temp_per_minute[15]")
-			div(layout layout-sm="column")
-				div(flex="50")
-					//- img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
-				div(flex="50")
-					md-input-container(class="md-block")
-						label Roast Notes
-						textarea(ng-model="newRoast.roast_notes" columns="1" md-maxlength="450" rows="1")
-					md-input-container(class="md-block")
-						label Taste Notes
-						textarea(ng-model="newRoast.taste_notes" columns="1" md-maxlength="450" rows="1")
+	form(name="newRoastForm")
+		input(type="hidden" id="image_url" name="image_url" value="/public/default.png")
+
+		div(layout layout-sm="column")
+			div(flex="50")
+				md-input-container(flex="90")
+					label Roast Title
+					input(ng-model="newRoast.title")
+				div(layout layout-sm="column")
+					md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date")
+					md-datepicker(ng-model="newRoast.beans_received" md-placeholder="Beans Received")
+				div(layout layout-sm="column")
+					//- md-input-container(flex="40")
+					//- 	label Bean Country of Origin
+					//- 	input(ng-model="newRoast.bean_origin")
+					md-input-container(flex)
+						label Bean Origin
+						md-select(ng-model="newRoast.country")
+							md-option(ng-repeat="country in countries" ng-value="{{country}}") {{country}}
+					md-input-container(flex)
+						label Bean Processing Style
+						input(ng-model="newRoast.bean_processing")
+				div(layout layout-sm="column")
+					md-input-container(flex)
+						label Roaster Program
+						input(ng-model="newRoast.roaster_program")
+					md-input-container(flex)
+						//- label Roaster Preheated:
+						md-checkbox(ng-model="newRoast.roaster_warm") Roaster Preheated: {{newRoast.roaster_warm}}
+			div(flex="50")
+				img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
+				md-input-container
+					//- label Choose Image
+					//- input(type="file" id="file_input")
+					input(type="file" file-input="newRoast.files")
+					p(style="color:red;") {{newRoast.files.name}}
+					//- li(ng-repeat="file in newRoast.files") {{file.name}}
+					//- p {{newRoast}}
+					//- p {{newRoast.title}}
+					//- p {{newRoast.imgTitle.name}}
+		div(layout layout-sm="column")
+			div(flex) Time
+			md-input-container(flex)
+				label Bottom
+				input(ng-model="newRoast.time.bottom")
+			md-input-container(flex)
+				label Yellow
+				input(ng-model="newRoast.time.yellow")
+			md-input-container(flex)
+				label Brown
+				input(ng-model="newRoast.time.brown")
+			md-input-container(flex)
+				label 1st Crack Start
+				input(ng-model="newRoast.time.first_crack_start")
+			md-input-container(flex)
+				label 1st Crack End
+				input(ng-model="newRoast.time.first_crack_end")
+			md-input-container(flex)
+				label 2nd Crack Start
+				input(ng-model="newRoast.time.second_crack_start")
+			md-input-container(flex)
+				label End
+				input(ng-model="newRoast.time.end")
+		div(layout layout-sm="column")
+			div(flex) Temp
+			md-input-container(flex)
+				label Bottom
+				input(ng-model="newRoast.temp.bottom")
+			md-input-container(flex)
+				label Yellow
+				input(ng-model="newRoast.temp.yellow")
+			md-input-container(flex)
+				label Brown
+				input(ng-model="newRoast.temp.brown")
+			md-input-container(flex)
+				label 1st Crack Start
+				input(ng-model="newRoast.temp.first_crack_start")
+			md-input-container(flex)
+				label 1st Crack End
+				input(ng-model="newRoast.temp.first_crack_end")
+			md-input-container(flex)
+				label 2nd Crack Start
+				input(ng-model="newRoast.temp.second_crack_start")
+			md-input-container(flex)
+				label End
+				input(ng-model="newRoast.temp.end")
+		div(layout layout-sm="column")
+			div(flex) Temp / Minute
+			md-input-container(flex)
+				label 0
+				input(ng-model="newRoast.temp_per_minute[0]")
+			md-input-container(flex)
+				label 1
+				input(ng-model="newRoast.temp_per_minute[1]")
+			md-input-container(flex)
+				label 2
+				input(ng-model="newRoast.temp_per_minute[2]")
+			md-input-container(flex)
+				label 3
+				input(ng-model="newRoast.temp_per_minute[3]")
+			md-input-container(flex)
+				label 4
+				input(ng-model="newRoast.temp_per_minute[4]")
+			md-input-container(flex)
+				label 5
+				input(ng-model="newRoast.temp_per_minute[5]")
+			md-input-container(flex)
+				label 6
+				input(ng-model="newRoast.temp_per_minute[6]")
+			md-input-container(flex)
+				label 7
+				input(ng-model="newRoast.temp_per_minute[7]")
+			md-input-container(flex)
+				label 8
+				input(ng-model="newRoast.temp_per_minute[8]")
+			md-input-container(flex)
+				label 9
+				input(ng-model="newRoast.temp_per_minute[9]")
+			md-input-container(flex)
+				label 10
+				input(ng-model="newRoast.temp_per_minute[10]")
+			md-input-container(flex)
+				label 11
+				input(ng-model="newRoast.temp_per_minute[11]")
+			md-input-container(flex)
+				label 12
+				input(ng-model="newRoast.temp_per_minute[12]")
+			md-input-container(flex)
+				label 13
+				input(ng-model="newRoast.temp_per_minute[13]")
+			md-input-container(flex)
+				label 14
+				input(ng-model="newRoast.temp_per_minute[14]")
+			md-input-container(flex)
+				label 15
+				input(ng-model="newRoast.temp_per_minute[15]")
+		div(layout layout-sm="column")
+			div(flex="50")
+				//- img(id="imgPreview" ng-src="img/placeholder_roast_img.jpg")
+			div(flex="50")
+				md-input-container(class="md-block")
+					label Roast Notes
+					textarea(ng-model="newRoast.roast_notes" columns="1" md-maxlength="450" rows="1")
+				md-input-container(class="md-block")
+					label Taste Notes
+					textarea(ng-model="newRoast.taste_notes" columns="1" md-maxlength="450" rows="1")
 
 
-			md-button(class="md-raised md-primary" ng-click="addRoast()") Submit
+		md-button(class="md-raised md-primary" ng-click="addRoast()") Submit

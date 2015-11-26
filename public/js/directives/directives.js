@@ -34,19 +34,39 @@ angular.module('RoastLogAppDirs', [])
     //         },
             
     //     };
-    // }); 
-	.directive('fileInput',['$parse',function($parse){
-    	return {
-    		restrict:'A',
-    		link:function(scope,elm,attrs){
-    			//console.log('now?');
-    			elm.bind('change',function(){
-    				$parse(attrs.fileInput)
-    				.assign(scope,elm[0].files)
-    				scope.$apply()
-    			})
-    		}
-    	}
+    // });
+    //
+    // orig from egghead: https://egghead.io/lessons/angularjs-file-uploads
+    // 
+	// .directive('fileInput',['$parse',function($parse){
+ //    	return {
+ //    		restrict:'A',
+ //    		link:function(scope,elm,attrs){
+ //    			//console.log('now?');
+ //    			elm.bind('change',function(){
+ //    				$parse(attrs.fileInput)
+ //    				.assign(scope,elm[0].files)
+ //    				scope.$apply()
+ //                    console.log(scope)
+ //    			})
+ //    		}
+ //    	}
+ //    }])
+    // tweaked for single file upload
+     .directive('fileInput',['$parse',function($parse){
+     return {
+         restrict:'A',
+         link:function(scope,elm,attrs){
+             //console.log('now?');
+             elm.bind('change',function(){
+                 $parse(attrs.fileInput)
+                 .assign(scope,elm[0].files[0])
+                 scope.$apply()
+                 // console.log(scope)
+                 scope.getSignedRequest(elm[0].files[0])
+             })
+         }
+     }
     }])
     .directive('modalDialog', function() {
       return {
