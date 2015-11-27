@@ -24,14 +24,24 @@ angular.module('RoastLogAppCtrl', [])
 		
 		// return all roasts
 		var fetchRoasts = function() {
-			return CRUD.list().then(function(response) {
-				
+			// return CRUD.list().then(function(response) {
+			CRUD.list().then(function(response) {
 				$scope.roasts = response.data;
-
+				// console.log('fetched roasts');
 			}, function(errResponse) {
 				console.log(errResponse);
 			});
 		};
+
+		// $scope.fetchRoasts = fetchRoasts;
+
+		$scope.$on('roastAdded', function(){
+			// console.log("roast added propogation");
+			fetchRoasts();
+		});
+
+
+		// $scope.$on('roastAdded', $scope.fetchRoasts());
 
 		//return one roast
 		$scope.fetchOneRoast = function(id) {
@@ -73,6 +83,10 @@ angular.module('RoastLogAppCtrl', [])
 				.then(function(response){
 					console.log(response);
 				});
+
+			// console.log("delete roast");
+			// console.log(id);
+
 			//this.stopPropagation();
 		};
 
@@ -84,7 +98,7 @@ angular.module('RoastLogAppCtrl', [])
 	// add roast controller
 	//
 	//==================================
-	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', function (CRUD, $scope, $http) {
+	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', '$location', function (CRUD, $scope, $http, $location) {
 
 		$scope.newRoast = {
 			//////////////////////////////////////
@@ -96,6 +110,12 @@ angular.module('RoastLogAppCtrl', [])
 			//////////////////////////////////////
 			roaster_warm: false,
 			country: "Bean Origin"
+			// title
+			// roastDate
+			// beans_received
+			// country
+			// bean_processing
+			// roaster_program
 			// time: {
 			// 	bottom: "1:30",
 			// 	yellow: "5:00",
@@ -202,13 +222,14 @@ angular.module('RoastLogAppCtrl', [])
 			
 			//newRoast is connected on the form model in the html
 			CRUD.addRoast($scope.newRoast)
-			.then(fetchRoasts)
+			// .then($scope.fetchRoasts)
+			.then($scope.$emit('roastAdded'))
 			.then(function(response){
-				$scope.newRoast = {
-					roaster_warm: false,
-					country: "Bean Origin"
-				};
-				$scope.files = {} ;
+				// console.log($scope.newRoast);
+				$scope.newRoast = {}
+				$scope.newRoast.roaster_warm = false;
+				$scope.newRoast.country = "Bean Origin";
+				$location.url("/show_roasts");
 			});
 		};
 
