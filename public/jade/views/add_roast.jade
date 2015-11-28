@@ -24,7 +24,7 @@ div(ng-controller="addRoastCtrl"
 					md-input-container(flex)
 						label Bean Origin
 						md-select(ng-model="newRoast.country")
-							md-option(ng-repeat="country in countries" ng-value="{{country}}") {{country}}
+							md-option(ng-repeat="country in countries" ng-value="country") {{country}}
 					md-input-container(flex)
 						label Bean Processing Style
 						input(ng-model="newRoast.bean_processing")

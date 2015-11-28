@@ -151,13 +151,10 @@ angular.module('RoastLogAppCtrl', [])
 			// as coming in from the view
 			//
 			//////////////////////////////////////
-			// roastDate: new Date(),
-			// beans_received: new Date(),
 			roaster_warm: false,
 			country: "Bean Origin",
 			// title
 			// roastDate
-			// roastDateHuman
 			// beans_received
 			// country
 			// bean_processing
@@ -196,7 +193,10 @@ angular.module('RoastLogAppCtrl', [])
 			"Columbia",
 			"Mexico",
 			"Java",
-			"Brazil"
+			"Brazil",
+			"Costa Rica",
+			"India",
+			"Guatemala"
 		];
 
 		// $scope.files = {};

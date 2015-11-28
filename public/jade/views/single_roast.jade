@@ -1,7 +1,55 @@
 <!-- single roast detail -->
 //- .single-roast-detail
-div(layout layout-align="center" ng-controller="viewOneRoastCtrl")
+div(layout
+	layout-align="center"
+	ng-controller="viewOneRoastCtrl"
+	class="md-body-1")
 	div(flex='90')
-		div(ng-cloak) {{$parent.dateTransform(singleRoast.roastDate)}}
-		h3(class="md-headline") {{singleRoast.title}}
-		img(ng-src="{{singleRoast.file.url}}")
+		div(ng-cloak)
+			span(class="md-body-2") Roast Date: 
+			| {{$parent.dateTransform(singleRoast.roastDate)}}
+		h3(class="md-display-1") {{singleRoast.title}}
+		div(layout)
+			div(flex="25")
+				div
+					span(class="md-body-2") Bean origin: 
+					| {{singleRoast.country}}
+				div
+					span(class="md-body-2") Processing style: 
+					| {{singleRoast.bean_processing}}
+				div
+					span(class="md-body-2") Intake Date: 
+					| {{$parent.dateTransform(singleRoast.beans_received)}}
+				div
+					span(class="md-body-2") Roaster Program: 
+					| {{singleRoast.roaster_program}}
+				div
+					span(class="md-body-2") Roaster Preheated: 
+					| {{singleRoast.roaster_warm}}
+				div
+					span(class="md-body-2") Bottom: 
+					| {{singleRoast.time.bottom}} / {{singleRoast.temp.bottom}}&deg;
+				div
+					span(class="md-body-2") Yellow: 
+					| {{singleRoast.time.yellow}} / {{singleRoast.temp.yellow}}&deg;
+				div
+					span(class="md-body-2") Brown: 
+					| {{singleRoast.time.brown}} / {{singleRoast.temp.brown}}&deg;
+				div
+					span(class="md-body-2") First Crack Start: 
+					| {{singleRoast.time.first_crack_start}} / {{singleRoast.temp.first_crack_start}}&deg;
+				div
+					span(class="md-body-2") First Crack End: 
+					| {{singleRoast.time.first_crack_end}} / {{singleRoast.temp.first_crack_end}}&deg;
+				div
+					span(class="md-body-2") Second Crack Start:
+					| {{singleRoast.time.second_crack_start}} / {{singleRoast.temp.second_crack_start}}&deg;
+				div
+					span(class="md-body-2") Second Crack End: 
+					| {{singleRoast.time.second_crack_end}} / {{singleRoast.temp.second_crack_end}}&deg;
+				div
+					span(class="md-body-2") End: 
+					| {{singleRoast.time.end}} / {{singleRoast.temp.end}}&deg;
+			img(ng-src="{{singleRoast.file.url}}")
+	
+	
