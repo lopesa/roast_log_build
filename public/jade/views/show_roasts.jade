@@ -1,13 +1,16 @@
 <!-- SHOW ROASTS -->
 //- div(layout="row" layout-sm="column" layout-wrap)
 div(layout layout-wrap)
-	div(ng-repeat="roast in roasts" flex-sm="100" flex-gt-sm="25")
-		//- md-content(class="md-padding")
-		md-content
+	div(ng-repeat="roast in roasts" flex-sm="100" flex-md="33" flex-gt-md="25")
+		md-content(class="md-padding")
 			md-card
 				img(ng-src='{{roast.file.url}}' class="md-card-image" alt='{{roast.title}}')
 				md-card-content
-					h2(class="md-title") {{roast.title}}
+					p(class="md-caption") Roasted: {{dateTransform(roast.roastDate)}}
+					//- p(class="md-caption") {{roast.roastDateHuman}}
+					h3(class="md-headline") {{roast.title}}
 					p {{roast.roast_notes}}
 				md-card-actions(layout="row" layout-align="end center")
-					md-button(ng-click='deleteRoast(this.roast._id)') Delete
+					//- md-button(class="md-primary" ng-click="fetchOneRoast(this.roast._id)") Go To
+					md-button(class="md-primary" ng-href="#/single_roast/{{this.roast._id}}") Go To
+					md-button(class="md-warn" ng-click='deleteRoast(this.roast._id)') Delete

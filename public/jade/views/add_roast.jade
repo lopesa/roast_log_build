@@ -14,7 +14,8 @@ div(ng-controller="addRoastCtrl"
 					label Roast Title
 					input(ng-model="newRoast.title")
 				div(layout layout-sm="column")
-					md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date")
+					//- md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date" ng-change="dateTransform(newRoast.roastDate)")
+					md-datepicker(ng-model="newRoast.roastDate" md-placeholder="Roast Date" ng-change="dateTransform(newRoast.roastDate)")
 					md-datepicker(ng-model="newRoast.beans_received" md-placeholder="Beans Received")
 				div(layout layout-sm="column")
 					//- md-input-container(flex="40")

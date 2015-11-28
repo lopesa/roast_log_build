@@ -1,5 +1,7 @@
 <!-- single roast detail -->
-.single-roast-detail
-	p(class="roast-date") {{singleRoast.roast_date}}
-	p(class="roast-title") {{singleRoast.bean}}
-	img(rst-image-zoom src="{{singleRoast.image_url}}" class="roast-image")
+//- .single-roast-detail
+div(layout layout-align="center" ng-controller="viewOneRoastCtrl")
+	div(flex='90')
+		div(ng-cloak) {{$parent.dateTransform(singleRoast.roastDate)}}
+		h3(class="md-headline") {{singleRoast.title}}
+		img(ng-src="{{singleRoast.file.url}}")

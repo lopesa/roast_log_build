@@ -19,6 +19,24 @@ angular.module('RoastLogAppCtrl', [])
           };
 
 
+    $scope.dateTransform = function(date) {
+			// console.log(date)
+			// console.log(typeof(date))
+
+			// all to resurrect this thing as an object (from a string)
+			
+			// changes string intake 'date' into number of milliseconds
+			// since 1970 whatever
+			var dateParse = Date.parse(date)
+
+			// create new date object
+			// set it's value based on that millisecond value from above 
+			var newTime = new Date();
+			newTime.setTime(dateParse);
+
+			return newTime.toDateString();
+		}
+
 		//this is the main get roasts function that is invoked in the other functions that follow
 		//the .then stuff is to deal with the promise system.
 		
@@ -44,17 +62,17 @@ angular.module('RoastLogAppCtrl', [])
 		// $scope.$on('roastAdded', $scope.fetchRoasts());
 
 		//return one roast
-		$scope.fetchOneRoast = function(id) {
+		// $scope.fetchOneRoast = function(id) {
 
 			
-			CRUD.getRoast(id)
-				.then(function(response){
-					$scope.singleRoast = response.data;
-					// console.log($scope.singleRoast);
-					// console.log(response.data);
-					$location.path('/single_roast')
-				});
-		};
+		// 	CRUD.getRoast(id)
+		// 		.then(function(response){
+		// 			$scope.singleRoast = response.data;
+		// 			console.log($scope.singleRoast);
+		// 			// console.log(response.data);
+		// 			$location.path('/single_roast')
+		// 		});
+		// };
 		
 		// add a roast
 		// $scope.addRoast = function() {
@@ -95,10 +113,35 @@ angular.module('RoastLogAppCtrl', [])
 	}])
 	// =================================
 	//
+	// view one roast controller
+	//
+	//==================================
+	.controller('viewOneRoastCtrl', ['CRUD', '$scope', '$http', '$location', '$routeParams', function (CRUD, $scope, $http, $location, $routeParams) {
+
+		// console.log($routeParams.id);
+
+		$scope.fetchOneRoast = function(id) {
+
+			CRUD.getRoast(id)
+				.then(function(response){
+					$scope.singleRoast = response.data;
+				});
+		};
+
+		$scope.fetchOneRoast($routeParams.id);
+
+
+
+
+	}])
+	// =================================
+	//
 	// add roast controller
 	//
 	//==================================
 	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', '$location', function (CRUD, $scope, $http, $location) {
+
+
 
 		$scope.newRoast = {
 			//////////////////////////////////////
@@ -108,38 +151,41 @@ angular.module('RoastLogAppCtrl', [])
 			// as coming in from the view
 			//
 			//////////////////////////////////////
+			// roastDate: new Date(),
+			// beans_received: new Date(),
 			roaster_warm: false,
-			country: "Bean Origin"
+			country: "Bean Origin",
 			// title
 			// roastDate
+			// roastDateHuman
 			// beans_received
 			// country
 			// bean_processing
 			// roaster_program
-			// time: {
-			// 	bottom: "1:30",
-			// 	yellow: "5:00",
-			// 	brown: "8:00",
-			// 	first_crack_start: "9:00",
-			// 	first_crack_end: "10:30",
-			// 	second_crack_start: "11:30",
-			// 	end: "13:00"
-			// },
+			time: {
+				bottom: "1:30",
+				yellow: "5:00",
+				brown: "8:00",
+				first_crack_start: "9:00",
+				first_crack_end: "10:30",
+				second_crack_start: "11:30",
+				end: "13:00"
+			},
 			// file: {
 			// 	name: "",
 			//	url: ""
 			// }
-			// temp: {
-			// 	drop: 180,
-			// 	bottom: 130,
-			// 	yellow: 230,
-			// 	brown: 300,
-			// 	first_crack_start: 370,
-			// 	first_crack_end: 405,
-			// 	second_crack_start: 415,
-			// 	end: 420
-			// },
-			// temp_per_minute: [180,200,220,240,260,280,300,320,340,360,380,400,420],
+			temp: {
+				drop: 180,
+				bottom: 130,
+				yellow: 230,
+				brown: 300,
+				first_crack_start: 370,
+				first_crack_end: 405,
+				second_crack_start: 415,
+				end: 420
+			},
+			temp_per_minute: [180,200,220,240,260,280,300,320,340,360,380,400,420],
 			// roast_notes: "Roast Notes",
 			// taste_notes: "Taste Notes"
 		};
@@ -149,9 +195,10 @@ angular.module('RoastLogAppCtrl', [])
 			"Ethiopia",
 			"Columbia",
 			"Mexico",
-			"Java"
+			"Java",
+			"Brazil"
 		];
-		
+
 		// $scope.files = {};
 
 		// =================================
