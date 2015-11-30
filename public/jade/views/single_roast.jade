@@ -4,13 +4,13 @@ div(layout
 	layout-align="center"
 	ng-controller="viewOneRoastCtrl"
 	class="md-body-1")
-	div(flex='90')
+	div(flex='70')
 		div(ng-cloak)
 			span(class="md-body-2") Roast Date: 
 			| {{$parent.dateTransform(singleRoast.roastDate)}}
 		h3(class="md-display-1") {{singleRoast.title}}
-		div(layout)
-			div(flex="25")
+		div(layout layout-margin)
+			div(flex="30")
 				div
 					span(class="md-body-2") Bean origin: 
 					| {{singleRoast.country}}
@@ -26,6 +26,12 @@ div(layout
 				div
 					span(class="md-body-2") Roaster Preheated: 
 					| {{singleRoast.roaster_warm}}
+			div(flex="15")
+			div(flex="40")
+				img(ng-src="{{singleRoast.file.url}}" style="width:100%")
+		md-divider
+		div(layout layout-margin)
+			div(flex="35")
 				div
 					span(class="md-body-2") Bottom: 
 					| {{singleRoast.time.bottom}} / {{singleRoast.temp.bottom}}&deg;
@@ -41,15 +47,19 @@ div(layout
 				div
 					span(class="md-body-2") First Crack End: 
 					| {{singleRoast.time.first_crack_end}} / {{singleRoast.temp.first_crack_end}}&deg;
-				div
+				div(ng-if="singleRoast.time.second_crack_start")
 					span(class="md-body-2") Second Crack Start:
 					| {{singleRoast.time.second_crack_start}} / {{singleRoast.temp.second_crack_start}}&deg;
-				div
+				div(ng-if="singleRoast.time.second_crack_end")
 					span(class="md-body-2") Second Crack End: 
 					| {{singleRoast.time.second_crack_end}} / {{singleRoast.temp.second_crack_end}}&deg;
 				div
 					span(class="md-body-2") End: 
 					| {{singleRoast.time.end}} / {{singleRoast.temp.end}}&deg;
-			img(ng-src="{{singleRoast.file.url}}")
+			div(flex="5")
+			div(flex="60")
+				d3-bars(data="data" bar-height="20" bar-padding="5")
+		
+
 	
 	
