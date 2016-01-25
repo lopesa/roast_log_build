@@ -25,6 +25,7 @@
     "grunt-contrib-watch": "latest",
     "grunt-node-inspector": "^0.1.5",
     "grunt-nodemon": "^0.3.0",
+    "grunt-sass": "^1.1.0",
     "grunt-shell": "^1.1.1",
     "jshint-stylish": "latest",
     "open": "latest"

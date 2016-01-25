@@ -57,8 +57,9 @@ div(layout
 					span(class="md-body-2") End: 
 					| {{singleRoast.time.end}} / {{singleRoast.temp.end}}&deg;
 			div(flex="5")
-			div(flex="60")
-				d3-bars(data="data" bar-height="20" bar-padding="5")
+			//- div(flex="60")
+				//- d3-bars(data="data" bar-height="20" bar-padding="5")
+				d3-bars(data="singleRoast.temp_per_minute" bar-width="20" bar-padding="5")
 		
 
 	

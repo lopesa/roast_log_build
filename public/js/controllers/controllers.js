@@ -14,12 +14,8 @@ angular.module('RoastLogAppCtrl', [])
 		// 	$scope.modalShown = !$scope.modalShown;
 		// };
 
-		$scope.data = [
-          {name: "Greg", score: 98},
-          {name: "Ari", score: 96},
-          {name: 'Q', score: 75},
-          {name: "Loser", score: 48}
-        ];
+		
+
 
 		$scope.showModal = function() {
             this.modalShown = true;
@@ -132,10 +128,21 @@ angular.module('RoastLogAppCtrl', [])
 			CRUD.getRoast(id)
 				.then(function(response){
 					$scope.singleRoast = response.data;
+					console.log($scope.singleRoast.temp_per_minute);
 				});
 		};
 
 		$scope.fetchOneRoast($routeParams.id);
+
+		$scope.whatever = [
+          {name: "Greg", score: 98},
+          {name: "Ari", score: 96},
+          {name: 'Q', score: 75},
+          {name: "Loser", score: 48}
+        ];
+
+    // console.log($scope.singleRoast);
+
 
 
 

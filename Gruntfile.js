@@ -41,6 +41,8 @@ module.exports = function(grunt) {
         }
     },
     
+    // grunt-contrib-sass (ruby)
+    // same works for grunt-sass (lib-sass based version)
     sass: {
       dist: {
         files: [{
@@ -151,7 +153,8 @@ module.exports = function(grunt) {
   // grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
+  // grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-nodemon');
