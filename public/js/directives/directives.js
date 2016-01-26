@@ -1,22 +1,6 @@
-angular.module('RoastLogAppDirs', ['d3'])
-    //
-    // orig from egghead: https://egghead.io/lessons/angularjs-file-uploads
-    // 
-	// .directive('fileInput',['$parse',function($parse){
- //    	return {
- //    		restrict:'A',
- //    		link:function(scope,elm,attrs){
- //    			//console.log('now?');
- //    			elm.bind('change',function(){
- //    				$parse(attrs.fileInput)
- //    				.assign(scope,elm[0].files)
- //    				scope.$apply()
- //                    console.log(scope)
- //    			})
- //    		}
- //    	}
- //    }])
-    // tweaked for single file upload
+angular.module('RoastLogAppDirs', [])
+// orig from egghead: https://egghead.io/lessons/angularjs-file-uploads
+// tweaked for single file upload
 .directive('fileInput',['$parse',function($parse){
   return {
     restrict:'A',
@@ -31,28 +15,6 @@ angular.module('RoastLogAppDirs', ['d3'])
     }
   }
 }])
-.directive('modalDialog', function() {
-  return {
-    restrict: 'E',
-    scope: {
-      show: '='
-    },
-    replace: true, // Replace with the template below
-    transclude: true, // we want to insert custom content inside the directive
-    link: function(scope, element, attrs) {
-      scope.dialogStyle = {};
-      if (attrs.width)
-        scope.dialogStyle.width = attrs.width;
-      if (attrs.height)
-        scope.dialogStyle.height = attrs.height;
-      scope.hideModal = function() {
-        scope.show = false;
-      };
-    },
-    templateUrl: "templates/modal.html"
-  };
-})
-// from http://www.ng-newsletter.com/posts/d3-on-angular.html
 .directive('d3Bars', ['d3Service', '$window', function(d3Service, $window) {
   return {
     restrict: 'EA',
@@ -203,17 +165,3 @@ angular.module('RoastLogAppDirs', ['d3'])
     }
   }
 }]);
-    // .directive('modal', function() {
-    //     function link(scope, element, attrs) {
-    //         element.on('click', function() {
-
-    //             // console.log('fuck oy');
-    //         })
-    //     }
-
-
-    //     return {
-    //         link: link
-    //         templateUrl: 'modal.html'
-    //     }
-    // });

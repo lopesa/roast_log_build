@@ -1,38 +1,7 @@
-This is my project of building a basic MEAN stack app. This is a roaster log app, but really I'm just getting used to the core functionality of all the parts of the stack. I'm learning to roast coffee and that has data, so I'm making a coffee roasting app to learn both.
+This is my project of building a basic MEAN stack app. It's a coffee roast logger.
 
+It's set to use non-local hosting so if you wre to download it you'd have to make those changes accordingly. Other than that you could run it locally with
 
-####install node dependencies
-	npm install
-
-####install vendor dependencies
-	bower install
-
-####the rest of this setup is only if you are going to process scss files
-css files are inlcuded so feel free to just use them instead
-
-basic ruby setup (for Compass and Susy) ignore if you have already
-	
-	update ruby
-	gem update --system
-
-install the ruby package manager "bundler"
-	
-	sudo gem install bundle
-
-####install ruby dependencies from config.rb file
-	bundle install
-
-####watch for changes to to scss files to signal new rewrites to css files
-	compass watch
-
-##TO DO
-
-* image zoomer  
-
-* user login
-
-* validation on image upload
-
-* graph of roast temp
-
-* all of the details of the image upload. Deleting the image on deleting a roast.
+    npm install
+		bower install
+		grunt.

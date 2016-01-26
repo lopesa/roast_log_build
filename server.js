@@ -16,7 +16,7 @@ var port = process.env.PORT || 8080; // set our port. should move this to the co
 
 // database connection =====================================
 //connect to db with monk
-var db              = monk(config.url);
+var db        = monk(config.url);
 var coll			= db.get('roasts');
 
 //Make our db and collection accessible to our router

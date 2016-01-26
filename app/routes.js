@@ -20,7 +20,6 @@ module.exports = function(app) {
 		promise.on('complete', function(err, doc){
 			if(err) {
 				console.log(err);
-				// console.log('farts');
 			}
 			res.json(doc);
 		});

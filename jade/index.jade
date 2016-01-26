@@ -1,0 +1,27 @@
+html(ng-app="roastLogApp")
+	head
+		link(rel="stylesheet" href="./css/screen.css")
+		link(rel="stylesheet" href="./vendor/angular-material/angular-material.css")
+	
+	body(ng-controller="roastLogAppCtrl")
+		div(layout="row" class="header" layout-align="center center")
+			ul(flex)
+				li
+					a(class="md-subhead" href="/#/add_roast") Add New Roast
+				li
+					a(class="md-subhead" href="/#/") Show All Roasts
+
+		div(ng-view)
+
+		//- script(src="./vendor/jquery/dist/jquery.min.js")
+		script(src="./vendor/angular/angular.js")
+		script(src="./vendor/angular-route/angular-route.js")
+		script(src="./vendor/angular-animate/angular-animate.js")
+		script(src="./vendor/angular-aria/angular-aria.js")
+		script(src="./vendor/angular-material/angular-material.js")
+		script(src="./js/services/CRUDservice.js")
+		//- script(src="./js/services/d3Service.js")
+		script(src="./js/directives/directives.js")
+		script(src="./js/controllers/controllers.js")
+		//- script(src="//localhost:35729/livereload.js?LR-verbose")
+		script(src="./js/app.js")

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
     // this way we can use things like name and version (pkg.name)
     pkg: grunt.file.readJSON('package.json'),
 
-	// all of our configuration will go here
+    // all of our configuration will go here
     
     // configure jshint to validate js files -----------------------------------
     jshint: {
@@ -21,8 +21,8 @@ module.exports = function(grunt) {
         reporter: require('jshint-stylish') // use jshint-stylish to make our errors look and read good
       },
 
-    // when this task is run, lint the Gruntfile and all js files in src
-      build: ['Grunfile.js', 'public/js/*/*.js']
+      // when this task is run, lint the Gruntfile and all js files in src
+      build: ['Gruntfile.js', 'public/js/*/*.js']
     },
 
     jade: {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 pretty: true
             },
             files: [ {
-              cwd: "public/jade",
+              cwd: "jade",
               src: "**/*.jade",
               dest: "public",
               expand: true,
@@ -64,7 +64,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
 
     //use nodemon to start the server
     nodemon: {
@@ -107,10 +106,6 @@ module.exports = function(grunt) {
     watch: {
       options: {
           livereload: true
-          // livereload: {
-          //   host: 'localhost',
-          //   port: 35729
-          // },
       },
       server: {
         files: ['.rebooted']
@@ -120,14 +115,10 @@ module.exports = function(grunt) {
         tasks: ['sass']
       },
       templates: {
-        files: 'public/jade/**/*.jade',
+        files: 'jade/**/*.jade',
         tasks: ['jade']
       }
-    }
-
-
-
-
+    },
 
 
     // configure uglify to minify js files -------------------------------------
@@ -150,16 +141,16 @@ module.exports = function(grunt) {
   // we can only load these if they are in our package.json
   // make sure you have run npm install so our app can find these
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-sass');
   // grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  // grunt.loadNpmTasks('grunt-contrib-cssmin');
+  // grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-node-inspector');
   grunt.loadNpmTasks('grunt-concurrent');
   //
   grunt.registerTask('default', ['jade', 'sass', 'concurrent']);
+  grunt.registerTask('build', ['jade', 'sass']);
 };

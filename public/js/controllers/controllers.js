@@ -1,32 +1,14 @@
 angular.module('RoastLogAppCtrl', [])
 	.controller('roastLogAppCtrl', ['CRUD', '$scope', '$location', function (CRUD, $scope, $location) {
 
-		//var self = this;
 		$scope.roasts = [];
-		// $scope.newRoast = {};
 		$scope.singleRoast = {};
-		
-		// $scope.files = {} ;
-
-		//modal
-		$scope.modalShown = false;
-		// $scope.toggleModal = function() {
-		// 	$scope.modalShown = !$scope.modalShown;
-		// };
 
 		
-
-
-		$scope.showModal = function() {
-            this.modalShown = true;
-          };
-
-
-    $scope.dateTransform = function(date) {
-			// console.log(date)
-			// console.log(typeof(date))
-
+		$scope.dateTransform = function(date) {
+			// utility function
 			// all to resurrect this thing as an object (from a string)
+			// code smell = doodie
 			
 			// changes string intake 'date' into number of milliseconds
 			// since 1970 whatever
@@ -40,12 +22,11 @@ angular.module('RoastLogAppCtrl', [])
 			return newTime.toDateString();
 		}
 
-		//this is the main get roasts function that is invoked in the other functions that follow
-		//the .then stuff is to deal with the promise system.
+		//this is the main get roasts function that's invoked
+		// in the other functions that follow
 		
 		// return all roasts
 		var fetchRoasts = function() {
-			// return CRUD.list().then(function(response) {
 			CRUD.list().then(function(response) {
 				$scope.roasts = response.data;
 				// console.log('fetched roasts');
@@ -54,48 +35,11 @@ angular.module('RoastLogAppCtrl', [])
 			});
 		};
 
-		// $scope.fetchRoasts = fetchRoasts;
-
 		$scope.$on('roastAdded', function(){
-			// console.log("roast added propogation");
 			fetchRoasts();
 		});
 
 
-		// $scope.$on('roastAdded', $scope.fetchRoasts());
-
-		//return one roast
-		// $scope.fetchOneRoast = function(id) {
-
-			
-		// 	CRUD.getRoast(id)
-		// 		.then(function(response){
-		// 			$scope.singleRoast = response.data;
-		// 			console.log($scope.singleRoast);
-		// 			// console.log(response.data);
-		// 			$location.path('/single_roast')
-		// 		});
-		// };
-		
-		// add a roast
-		// $scope.addRoast = function() {
-		// 	//console.log($scope.newRoast);
-			
-		// 	//newRoast is connected on the form model in the html
-		// 	CRUD.addRoast($scope.newRoast)
-		// 	.then(fetchRoasts)
-		// 	.then(function(response){
-		// 		$scope.newRoast = {} ;
-		// 		$scope.files = {} ;
-		// 	});
-		// };
-
-		//listener for fileupload
-		// $scope.filesChanged = function (elm) {
-		// 	$scope.files=elm.files;
-		// 	//console.log(self.files);
-		// 	$scope.$apply();
-		// };
 
 		$scope.deleteRoast = function(id) {
 
@@ -104,59 +48,32 @@ angular.module('RoastLogAppCtrl', [])
 				.then(function(response){
 					console.log(response);
 				});
-
-			// console.log("delete roast");
-			// console.log(id);
-
-			//this.stopPropagation();
 		};
 
 		// get all roasts when the controller loads
 		fetchRoasts();
 	}])
 	// =================================
-	//
 	// view one roast controller
-	//
 	//==================================
 	.controller('viewOneRoastCtrl', ['CRUD', '$scope', '$http', '$location', '$routeParams', function (CRUD, $scope, $http, $location, $routeParams) {
-
-		// console.log($routeParams.id);
 
 		$scope.fetchOneRoast = function(id) {
 
 			CRUD.getRoast(id)
 				.then(function(response){
 					$scope.singleRoast = response.data;
-					console.log($scope.singleRoast.temp_per_minute);
+					// console.log($scope.singleRoast.temp_per_minute);
 				});
 		};
 
 		$scope.fetchOneRoast($routeParams.id);
-
-		$scope.whatever = [
-          {name: "Greg", score: 98},
-          {name: "Ari", score: 96},
-          {name: 'Q', score: 75},
-          {name: "Loser", score: 48}
-        ];
-
-    // console.log($scope.singleRoast);
-
-
-
-
-
 	}])
 	// =================================
-	//
 	// add roast controller
-	//
 	//==================================
 	.controller('addRoastCtrl', ['CRUD', '$scope', '$http', '$location', function (CRUD, $scope, $http, $location) {
-
-
-
+			
 		$scope.newRoast = {
 			//////////////////////////////////////
 			//
@@ -173,30 +90,30 @@ angular.module('RoastLogAppCtrl', [])
 			// country
 			// bean_processing
 			// roaster_program
-			time: {
-				bottom: "1:30",
-				yellow: "5:00",
-				brown: "8:00",
-				first_crack_start: "9:00",
-				first_crack_end: "10:30",
-				second_crack_start: "11:30",
-				end: "13:00"
-			},
+			// time: {
+			// 	bottom: "1:30",
+			// 	yellow: "5:00",
+			// 	brown: "8:00",
+			// 	first_crack_start: "9:00",
+			// 	first_crack_end: "10:30",
+			// 	second_crack_start: "11:30",
+			// 	end: "13:00"
+			// },
 			// file: {
 			// 	name: "",
 			//	url: ""
 			// }
-			temp: {
-				drop: 180,
-				bottom: 130,
-				yellow: 230,
-				brown: 300,
-				first_crack_start: 370,
-				first_crack_end: 405,
-				second_crack_start: 415,
-				end: 420
-			},
-			temp_per_minute: [180,200,220,240,260,280,300,320,340,360,380,400,420],
+			// temp: {
+			// 	drop: 180,
+			// 	bottom: 130,
+			// 	yellow: 230,
+			// 	brown: 300,
+			// 	first_crack_start: 370,
+			// 	first_crack_end: 405,
+			// 	second_crack_start: 415,
+			// 	end: 420
+			// },
+			// temp_per_minute: [180,200,220,240,260,280,300,320,340,360,380,400,420],
 			// roast_notes: "Roast Notes",
 			// taste_notes: "Taste Notes"
 		};
@@ -212,9 +129,6 @@ angular.module('RoastLogAppCtrl', [])
 			"India",
 			"Guatemala"
 		];
-
-		// $scope.files = {};
-
 		// =================================
 		//
 		// https://devcenter.heroku.com/articles/s3-upload-node
@@ -225,18 +139,12 @@ angular.module('RoastLogAppCtrl', [])
 		// =================================
 
 		$scope.getSignedRequest = function(file){
-			// console.log('trigger function in add roast controller');
-			// console.log(file);
 			$http({
 				method: 'get',
 				url: '/sign_s3?file_name=' +file.name+ '&file_type=' +file.type
 			})
 			.then(function (response) {
 				if (response.status === 200) {
-					// console.log("response status is 200");
-					// console.log("response.signed_request is " + response.data.signed_request);
-					// console.log("response.url is " + response.data.url)
-					// console.log(response)
 					$scope.uploadFile(file, response.data.signed_request, response.data.url);
 				}
 				else {
@@ -248,9 +156,6 @@ angular.module('RoastLogAppCtrl', [])
 		}
 
 		$scope.uploadFile = function(file, signed_request, url){
-			// console.log(file);
-			// console.log(signed_request);
-			// console.log(url);
 			$http({
 				method: 'put',
 				url: signed_request,
@@ -262,13 +167,9 @@ angular.module('RoastLogAppCtrl', [])
 			})
 			.then(function (response) {
 				if (response.status === 200) {
-					// console.log("success uploading, check aws");
-					// console.log(typeof(url))
 					url = url.replace(/ /g, '+');
 					$scope.newRoast.file.url = url;
-					// console.log(url);
 					document.getElementById("img-preview").src = url;
-					// console.log($scope.newRoast);
 				}
 				else {
 					console.log("failure uploading")
@@ -279,14 +180,11 @@ angular.module('RoastLogAppCtrl', [])
 		
 		// add a roast
 		$scope.addRoast = function() {
-			//console.log($scope.newRoast);
 			
 			//newRoast is connected on the form model in the html
 			CRUD.addRoast($scope.newRoast)
-			// .then($scope.fetchRoasts)
 			.then($scope.$emit('roastAdded'))
 			.then(function(response){
-				// console.log($scope.newRoast);
 				$scope.newRoast = {}
 				$scope.newRoast.roaster_warm = false;
 				$scope.newRoast.country = "Bean Origin";
