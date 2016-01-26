@@ -4,4 +4,4 @@ It's set to use non-local hosting so if you wre to download it you'd have to mak
 
     npm install
     bower install
-    grunt.
+    grunt
