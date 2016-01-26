@@ -6,13 +6,14 @@
   "dependencies": {
     "aws-sdk": "^2.2.17",
     "body-parser": "*",
+    "bower": "^1.7.2",
     "connect-multiparty": "*",
     "express": "*",
-    "method-override": "*",
-    "monk": "*",
     "grunt": "~0.4.4",
     "grunt-contrib-jade": "^0.15.0",
-    "grunt-sass": "^1.1.0"
+    "grunt-sass": "^1.1.0",
+    "method-override": "*",
+    "monk": "*"
   },
   "devDependencies": {
     "grunt-concurrent": "^1.0.0",
