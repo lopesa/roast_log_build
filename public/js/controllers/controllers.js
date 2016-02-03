@@ -160,7 +160,7 @@ angular.module('RoastLogAppCtrl', [])
 				method: 'put',
 				url: signed_request,
 				headers: {
-					// 'x-amz-acl': 'public-read',
+					'x-amz-acl': 'public-read',
 					'Content-Type': 'multipart/form-data'
 				},
 				data: file
